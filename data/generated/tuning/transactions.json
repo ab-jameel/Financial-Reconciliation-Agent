@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "TUNE-TXN-0001",
+    "date": "2026-08-12",
+    "amount": "1738.59",
+    "currency": "USD",
+    "reference": "REF-317602",
+    "description": "Rivera-Hill",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0002",
+    "date": "2026-08-15",
+    "amount": "3515.47",
+    "currency": "USD",
+    "reference": "REF-905187",
+    "description": "Barnett-Andrews",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0003",
+    "date": "2026-08-21",
+    "amount": "4266.51",
+    "currency": "USD",
+    "reference": "REF-332250",
+    "description": "Johnson Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0004",
+    "date": "2026-08-25",
+    "amount": "4246.68",
+    "currency": "USD",
+    "reference": "REF-617203",
+    "description": "Hughes-Holder",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0005",
+    "date": "2026-08-13",
+    "amount": "1963.43",
+    "currency": "USD",
+    "reference": "REF-694378",
+    "description": "Sellers PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0006",
+    "date": "2026-08-19",
+    "amount": "4991.73",
+    "currency": "USD",
+    "reference": "REF-658662",
+    "description": "Malone PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0007",
+    "date": "2026-08-25",
+    "amount": "4892.36",
+    "currency": "USD",
+    "reference": "REF-711649",
+    "description": "Morrow Ltd",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0008",
+    "date": "2026-08-27",
+    "amount": "2975.76",
+    "currency": "USD",
+    "reference": "REF-814892",
+    "description": "Williamson LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0009",
+    "date": "2026-08-20",
+    "amount": "2268.57",
+    "currency": "USD",
+    "reference": "REF-930576",
+    "description": "Mcdaniel LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0010",
+    "date": "2026-08-08",
+    "amount": "3611.11",
+    "currency": "USD",
+    "reference": "REF-362369",
+    "description": "Rosario, Barrett and Parks",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0011",
+    "date": "2026-08-23",
+    "amount": "3848",
+    "currency": "USD",
+    "reference": "REF-790532",
+    "description": "Garcia, Casey and Eaton",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0012",
+    "date": "2026-08-22",
+    "amount": "3991.96",
+    "currency": "USD",
+    "reference": "REF-788137",
+    "description": "Collins-Burgess",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0013",
+    "date": "2026-08-01",
+    "amount": "4109.47",
+    "currency": "USD",
+    "reference": "REF-755625",
+    "description": "Carr PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0014",
+    "date": "2026-08-11",
+    "amount": "1642.38",
+    "currency": "USD",
+    "reference": "REF-743341",
+    "description": "Trujillo Inc",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0015",
+    "date": "2026-08-03",
+    "amount": "3217.56",
+    "currency": "USD",
+    "reference": "REF-699996",
+    "description": "Liu Inc",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0016",
+    "date": "2026-08-26",
+    "amount": "208.34",
+    "currency": "USD",
+    "reference": "REF-122788",
+    "description": "Gilmore, Castro and Greer",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0017",
+    "date": "2026-08-22",
+    "amount": "621.01",
+    "currency": "USD",
+    "reference": "REF-760464",
+    "description": "Diaz-Mullins",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0018",
+    "date": "2026-08-08",
+    "amount": "4363.77",
+    "currency": "USD",
+    "reference": "REF-699169",
+    "description": "Dunn-Lucero",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0019",
+    "date": "2026-08-12",
+    "amount": "1703.01",
+    "currency": "USD",
+    "reference": "REF-889765",
+    "description": "Jennings-Robbins",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0020",
+    "date": "2026-08-25",
+    "amount": "1636.97",
+    "currency": "USD",
+    "reference": "REF-675254",
+    "description": "Rios, Snyder and Landry",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0021",
+    "date": "2026-08-15",
+    "amount": "3602.41",
+    "currency": "USD",
+    "reference": "REF-162689",
+    "description": "Chen LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0022",
+    "date": "2026-08-21",
+    "amount": "580.51",
+    "currency": "USD",
+    "reference": "REF-617676",
+    "description": "Douglas and Sons",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0023",
+    "date": "2026-08-21",
+    "amount": "2010.25",
+    "currency": "USD",
+    "reference": "REF-418920",
+    "description": "Singleton-Brown",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0024",
+    "date": "2026-08-21",
+    "amount": "777.95",
+    "currency": "USD",
+    "reference": "REF-236447",
+    "description": "Johnson-Fisher",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0025",
+    "date": "2026-08-28",
+    "amount": "1399.1",
+    "currency": "USD",
+    "reference": "REF-158983",
+    "description": "Kennedy Ltd",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0026",
+    "date": "2026-08-10",
+    "amount": "174.31",
+    "currency": "USD",
+    "reference": "REF-350004",
+    "description": "Phillips, Calderon and Peters",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0027",
+    "date": "2026-08-05",
+    "amount": "366.49",
+    "currency": "USD",
+    "reference": "REF-595512",
+    "description": "Johnson Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0028",
+    "date": "2026-08-21",
+    "amount": "3490.9",
+    "currency": "USD",
+    "reference": "REF-408850",
+    "description": "Martin LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0029",
+    "date": "2026-08-27",
+    "amount": "2407.52",
+    "currency": "USD",
+    "reference": "REF-681904",
+    "description": "Briggs Ltd",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0030",
+    "date": "2026-08-06",
+    "amount": "142.15",
+    "currency": "USD",
+    "reference": "REF-242278",
+    "description": "Greene PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0031",
+    "date": "2026-08-07",
+    "amount": "870.07",
+    "currency": "USD",
+    "reference": "REF-177898",
+    "description": "Hill-Graves",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0032",
+    "date": "2026-08-07",
+    "amount": "4281.92",
+    "currency": "USD",
+    "reference": "REF-946843",
+    "description": "Coleman-Andrews",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0033",
+    "date": "2026-08-06",
+    "amount": "3153.66",
+    "currency": "USD",
+    "reference": "REF-711247",
+    "description": "Mora Ltd",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0034",
+    "date": "2026-08-14",
+    "amount": "1457.76",
+    "currency": "USD",
+    "reference": "REF-262704",
+    "description": "Owens, Cox and Phelps",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0035",
+    "date": "2026-08-28",
+    "amount": "2490.96",
+    "currency": "USD",
+    "reference": "REF-545498",
+    "description": "Clark, Castillo and Fitzgerald",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0036",
+    "date": "2026-08-19",
+    "amount": "4426.32",
+    "currency": "USD",
+    "reference": "REF-132902",
+    "description": "Hall, Jackson and Jones",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0037",
+    "date": "2026-08-24",
+    "amount": "4359.63",
+    "currency": "USD",
+    "reference": "REF-814967",
+    "description": "Huynh, Montgomery and Hines",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0038",
+    "date": "2026-08-12",
+    "amount": "3310.64",
+    "currency": "USD",
+    "reference": "REF-993548",
+    "description": "Stone, Rice and Sampson",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0039",
+    "date": "2026-08-18",
+    "amount": "1094.32",
+    "currency": "USD",
+    "reference": "REF-994722",
+    "description": "Byrd, Mcneil and Mccall",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0040",
+    "date": "2026-08-05",
+    "amount": "3868.23",
+    "currency": "USD",
+    "reference": "REF-954197",
+    "description": "Dunn, Lawrence and Jones",
+    "dataset_split": "tuning",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "TUNE-TXN-0041",
+    "date": "2026-08-08",
+    "amount": "4153.11",
+    "currency": "USD",
+    "reference": "REF-279856",
+    "description": "Roberts PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0042",
+    "date": "2026-08-02",
+    "amount": "3089.14",
+    "currency": "USD",
+    "reference": "REF-462330",
+    "description": "Eaton-Stone",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0043",
+    "date": "2026-08-25",
+    "amount": "3662.11",
+    "currency": "USD",
+    "reference": "REF-797193",
+    "description": "Yang, Schmidt and Gilbert",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0044",
+    "date": "2026-08-17",
+    "amount": "1400.01",
+    "currency": "USD",
+    "reference": "REF-451670",
+    "description": "Richardson-Cabrera",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0045",
+    "date": "2026-08-28",
+    "amount": "4838.94",
+    "currency": "USD",
+    "reference": "REF-897013",
+    "description": "Palmer, Smith and Diaz",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0046",
+    "date": "2026-08-08",
+    "amount": "3101.03",
+    "currency": "USD",
+    "reference": "REF-993738",
+    "description": "Boone, Torres and Daniel",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0047",
+    "date": "2026-08-08",
+    "amount": "1519.34",
+    "currency": "USD",
+    "reference": "REF-202905",
+    "description": "Becker-Tucker",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0048",
+    "date": "2026-08-07",
+    "amount": "2732.56",
+    "currency": "USD",
+    "reference": "REF-166893",
+    "description": "Adams Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0049",
+    "date": "2026-08-14",
+    "amount": "2798.04",
+    "currency": "USD",
+    "reference": "REF-970955",
+    "description": "Mercado LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0050",
+    "date": "2026-08-12",
+    "amount": "4016.69",
+    "currency": "USD",
+    "reference": "REF-955382",
+    "description": "Estrada-Mcneil",
+    "dataset_split": "tuning",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0051",
+    "date": "2026-08-17",
+    "amount": "47.75",
+    "currency": "USD",
+    "reference": "REF-109634",
+    "description": "Dawson-Wood",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0052",
+    "date": "2026-08-21",
+    "amount": "2807.57",
+    "currency": "USD",
+    "reference": "REF-988210",
+    "description": "Meza LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0053",
+    "date": "2026-08-23",
+    "amount": "3831.75",
+    "currency": "USD",
+    "reference": "REF-250851",
+    "description": "Craig Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0054",
+    "date": "2026-08-23",
+    "amount": "2557.34",
+    "currency": "USD",
+    "reference": "REF-907685",
+    "description": "Hopkins-Ritter",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0055",
+    "date": "2026-08-14",
+    "amount": "1017.79",
+    "currency": "USD",
+    "reference": "REF-389935",
+    "description": "Stewart-Hale",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0056",
+    "date": "2026-08-03",
+    "amount": "1759.21",
+    "currency": "USD",
+    "reference": "REF-845838",
+    "description": "English, Mason and Stevens",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0057",
+    "date": "2026-08-04",
+    "amount": "4977.64",
+    "currency": "USD",
+    "reference": "REF-382483",
+    "description": "Peterson PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0058",
+    "date": "2026-08-22",
+    "amount": "3934.67",
+    "currency": "USD",
+    "reference": "REF-505230",
+    "description": "Boyd-Wood",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0059",
+    "date": "2026-08-25",
+    "amount": "115.09",
+    "currency": "USD",
+    "reference": "REF-936728",
+    "description": "Wheeler LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0060",
+    "date": "2026-08-20",
+    "amount": "3671.39",
+    "currency": "USD",
+    "reference": "REF-348782",
+    "description": "Johnson PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "TUNE-TXN-0061",
+    "date": "2026-08-01",
+    "amount": "2421.22",
+    "currency": "USD",
+    "reference": "REF-898518",
+    "description": "Rodriguez LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0062",
+    "date": "2026-08-01",
+    "amount": "2421.22",
+    "currency": "USD",
+    "reference": "REF-898518",
+    "description": "Rodriguez LLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0063",
+    "date": "2026-08-11",
+    "amount": "2476.34",
+    "currency": "USD",
+    "reference": "REF-704772",
+    "description": "Day-Scott",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0064",
+    "date": "2026-08-11",
+    "amount": "2476.34",
+    "currency": "USD",
+    "reference": "REF-704772",
+    "description": "Day-Scott",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0065",
+    "date": "2026-08-17",
+    "amount": "2371.83",
+    "currency": "USD",
+    "reference": "REF-488371",
+    "description": "Webb-Underwood",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0066",
+    "date": "2026-08-17",
+    "amount": "2371.83",
+    "currency": "USD",
+    "reference": "REF-488371",
+    "description": "Webb-Underwood",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0067",
+    "date": "2026-08-07",
+    "amount": "3128.03",
+    "currency": "USD",
+    "reference": "REF-628329",
+    "description": "Chapman Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0068",
+    "date": "2026-08-07",
+    "amount": "3128.03",
+    "currency": "USD",
+    "reference": "REF-628329",
+    "description": "Chapman Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0069",
+    "date": "2026-08-03",
+    "amount": "163.48",
+    "currency": "USD",
+    "reference": "REF-641870",
+    "description": "Manning PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0070",
+    "date": "2026-08-03",
+    "amount": "163.48",
+    "currency": "USD",
+    "reference": "REF-641870",
+    "description": "Manning PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0071",
+    "date": "2026-08-04",
+    "amount": "3598.1",
+    "currency": "USD",
+    "reference": "REF-403099",
+    "description": "Smith PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0072",
+    "date": "2026-08-04",
+    "amount": "3598.1",
+    "currency": "USD",
+    "reference": "REF-403099",
+    "description": "Smith PLC",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0073",
+    "date": "2026-08-21",
+    "amount": "2790.52",
+    "currency": "USD",
+    "reference": "REF-367488",
+    "description": "Drake-Rogers",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0074",
+    "date": "2026-08-21",
+    "amount": "2790.52",
+    "currency": "USD",
+    "reference": "REF-367488",
+    "description": "Drake-Rogers",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0075",
+    "date": "2026-08-16",
+    "amount": "1573.73",
+    "currency": "USD",
+    "reference": "REF-961464",
+    "description": "Salas Ltd",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0076",
+    "date": "2026-08-16",
+    "amount": "1573.73",
+    "currency": "USD",
+    "reference": "REF-961464",
+    "description": "Salas Ltd",
+    "dataset_split": "tuning",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "TUNE-TXN-0077",
+    "date": "2026-08-07",
+    "amount": "3096.96",
+    "currency": "USD",
+    "reference": "REF-283391",
+    "description": "Scott-Smith",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0078",
+    "date": "2026-08-24",
+    "amount": "3038.25",
+    "currency": "USD",
+    "reference": "REF-693973",
+    "description": "Atkins-Lopez",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0079",
+    "date": "2026-08-02",
+    "amount": "3094.32",
+    "currency": "USD",
+    "reference": "REF-459067",
+    "description": "Mason-Lopez",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0080",
+    "date": "2026-08-27",
+    "amount": "71.95",
+    "currency": "USD",
+    "reference": "REF-772923",
+    "description": "Taylor, Zimmerman and Thomas",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0081",
+    "date": "2026-08-01",
+    "amount": "1356.29",
+    "currency": "USD",
+    "reference": "REF-915465",
+    "description": "Chambers-Adams",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0082",
+    "date": "2026-08-07",
+    "amount": "2034.63",
+    "currency": "USD",
+    "reference": "REF-624801",
+    "description": "Wilson-Hoffman",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0083",
+    "date": "2026-08-27",
+    "amount": "3041.39",
+    "currency": "USD",
+    "reference": "REF-247197",
+    "description": "Berger, Mathis and Gibson",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0084",
+    "date": "2026-08-13",
+    "amount": "2583.76",
+    "currency": "USD",
+    "reference": "REF-805500",
+    "description": "Johnson-Levine",
+    "dataset_split": "tuning",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "TUNE-TXN-0085",
+    "date": "2026-08-09",
+    "amount": "1828.21",
+    "currency": "USD",
+    "reference": "REF-221368",
+    "description": "Lee and Sons",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0086",
+    "date": "2026-08-18",
+    "amount": "3375.86",
+    "currency": "USD",
+    "reference": "REF-788147",
+    "description": "Floyd, Ali and Wilson",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0087",
+    "date": "2026-08-28",
+    "amount": "2642.05",
+    "currency": "USD",
+    "reference": "REF-577460",
+    "description": "Cunningham-Waller",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0088",
+    "date": "2026-08-14",
+    "amount": "178.36",
+    "currency": "USD",
+    "reference": "REF-207337",
+    "description": "Rodriguez Inc",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0089",
+    "date": "2026-08-07",
+    "amount": "1953.9",
+    "currency": "USD",
+    "reference": "REF-238115",
+    "description": "Mercer-Lara",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0090",
+    "date": "2026-08-26",
+    "amount": "4338.29",
+    "currency": "USD",
+    "reference": "REF-910243",
+    "description": "Watts Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0091",
+    "date": "2026-08-19",
+    "amount": "1636.03",
+    "currency": "USD",
+    "reference": "REF-692633",
+    "description": "Johnson, French and Ayala",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0092",
+    "date": "2026-08-01",
+    "amount": "590.03",
+    "currency": "USD",
+    "reference": "REF-214874",
+    "description": "Owen Group",
+    "dataset_split": "tuning",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "TUNE-TXN-0093",
+    "date": "2026-08-07",
+    "amount": "4224.1",
+    "currency": "USD",
+    "reference": "REF-352754",
+    "description": "Smith, Roberts and Russell",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0094",
+    "date": "2026-08-23",
+    "amount": "226.04",
+    "currency": "USD",
+    "reference": "REF-559031",
+    "description": "Johnson, Miller and Martinez",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0095",
+    "date": "2026-08-01",
+    "amount": "3687.97",
+    "currency": "USD",
+    "reference": "REF-926426",
+    "description": "Acosta Inc",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0096",
+    "date": "2026-08-07",
+    "amount": "4208.33",
+    "currency": "USD",
+    "reference": "REF-190549",
+    "description": "Hunt-Williams",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0097",
+    "date": "2026-08-22",
+    "amount": "23.22",
+    "currency": "USD",
+    "reference": "REF-722066",
+    "description": "Martin, Sullivan and Gardner",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0098",
+    "date": "2026-08-17",
+    "amount": "2141.8",
+    "currency": "USD",
+    "reference": "REF-728280",
+    "description": "James, Snow and Ramirez",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0099",
+    "date": "2026-08-03",
+    "amount": "1923.9",
+    "currency": "USD",
+    "reference": "REF-226576",
+    "description": "Walker, Gutierrez and Williams",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "TUNE-TXN-0100",
+    "date": "2026-08-06",
+    "amount": "3821.06",
+    "currency": "USD",
+    "reference": "REF-108111",
+    "description": "Martin Inc",
+    "dataset_split": "tuning",
+    "label_exception_type": "policy_sensitive"
+  }
+]

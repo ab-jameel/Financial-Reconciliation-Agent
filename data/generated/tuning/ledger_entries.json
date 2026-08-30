@@ -1,0 +1,922 @@
+[
+  {
+    "id": "TUNE-LED-0001",
+    "date": "2026-08-12",
+    "amount": "1738.59",
+    "currency": "USD",
+    "reference": "REF-317602",
+    "description": "Rivera-Hill",
+    "invoice_number": "INV-46031",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0002",
+    "date": "2026-08-15",
+    "amount": "3515.47",
+    "currency": "USD",
+    "reference": "REF-905187",
+    "description": "Barnett-Andrews",
+    "invoice_number": "INV-85377",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0003",
+    "date": "2026-08-21",
+    "amount": "4266.51",
+    "currency": "USD",
+    "reference": "REF-332250",
+    "description": "Johnson Group",
+    "invoice_number": "INV-13763",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0004",
+    "date": "2026-08-25",
+    "amount": "4246.68",
+    "currency": "USD",
+    "reference": "REF-617203",
+    "description": "Hughes-Holder",
+    "invoice_number": "INV-45616",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0005",
+    "date": "2026-08-13",
+    "amount": "1963.43",
+    "currency": "USD",
+    "reference": "REF-694378",
+    "description": "Sellers PLC",
+    "invoice_number": "INV-25421",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0006",
+    "date": "2026-08-19",
+    "amount": "4991.73",
+    "currency": "USD",
+    "reference": "REF-658662",
+    "description": "Malone PLC",
+    "invoice_number": "INV-21351",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0007",
+    "date": "2026-08-25",
+    "amount": "4892.36",
+    "currency": "USD",
+    "reference": "REF-711649",
+    "description": "Morrow Ltd",
+    "invoice_number": "INV-38480",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0008",
+    "date": "2026-08-27",
+    "amount": "2975.76",
+    "currency": "USD",
+    "reference": "REF-814892",
+    "description": "Williamson LLC",
+    "invoice_number": "INV-24158",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0009",
+    "date": "2026-08-20",
+    "amount": "2268.57",
+    "currency": "USD",
+    "reference": "REF-930576",
+    "description": "Mcdaniel LLC",
+    "invoice_number": "INV-58990",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0010",
+    "date": "2026-08-08",
+    "amount": "3611.11",
+    "currency": "USD",
+    "reference": "REF-362369",
+    "description": "Rosario, Barrett and Parks",
+    "invoice_number": "INV-48565",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0011",
+    "date": "2026-08-23",
+    "amount": "3848",
+    "currency": "USD",
+    "reference": "REF-790532",
+    "description": "Garcia, Casey and Eaton",
+    "invoice_number": "INV-31614",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0012",
+    "date": "2026-08-22",
+    "amount": "3991.96",
+    "currency": "USD",
+    "reference": "REF-788137",
+    "description": "Collins-Burgess",
+    "invoice_number": "INV-23055",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0013",
+    "date": "2026-08-01",
+    "amount": "4109.47",
+    "currency": "USD",
+    "reference": "REF-755625",
+    "description": "Carr PLC",
+    "invoice_number": "INV-73122",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0014",
+    "date": "2026-08-11",
+    "amount": "1642.38",
+    "currency": "USD",
+    "reference": "REF-743341",
+    "description": "Trujillo Inc",
+    "invoice_number": "INV-13917",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0015",
+    "date": "2026-08-03",
+    "amount": "3217.56",
+    "currency": "USD",
+    "reference": "REF-699996",
+    "description": "Liu Inc",
+    "invoice_number": "INV-33019",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0016",
+    "date": "2026-08-26",
+    "amount": "208.34",
+    "currency": "USD",
+    "reference": "REF-122788",
+    "description": "Gilmore, Castro and Greer",
+    "invoice_number": "INV-16291",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0017",
+    "date": "2026-08-22",
+    "amount": "621.01",
+    "currency": "USD",
+    "reference": "REF-760464",
+    "description": "Diaz-Mullins",
+    "invoice_number": "INV-83352",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0018",
+    "date": "2026-08-08",
+    "amount": "4363.77",
+    "currency": "USD",
+    "reference": "REF-699169",
+    "description": "Dunn-Lucero",
+    "invoice_number": "INV-68190",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0019",
+    "date": "2026-08-12",
+    "amount": "1703.01",
+    "currency": "USD",
+    "reference": "REF-889765",
+    "description": "Jennings-Robbins",
+    "invoice_number": "INV-28085",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0020",
+    "date": "2026-08-25",
+    "amount": "1636.97",
+    "currency": "USD",
+    "reference": "REF-675254",
+    "description": "Rios, Snyder and Landry",
+    "invoice_number": "INV-70107",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0021",
+    "date": "2026-08-15",
+    "amount": "3602.41",
+    "currency": "USD",
+    "reference": "REF-162689",
+    "description": "Chen LLC",
+    "invoice_number": "INV-80055",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0022",
+    "date": "2026-08-21",
+    "amount": "580.51",
+    "currency": "USD",
+    "reference": "REF-617676",
+    "description": "Douglas and Sons",
+    "invoice_number": "INV-40196",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0023",
+    "date": "2026-08-21",
+    "amount": "2010.25",
+    "currency": "USD",
+    "reference": "REF-418920",
+    "description": "Singleton-Brown",
+    "invoice_number": "INV-17290",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0024",
+    "date": "2026-08-21",
+    "amount": "777.95",
+    "currency": "USD",
+    "reference": "REF-236447",
+    "description": "Johnson-Fisher",
+    "invoice_number": "INV-48244",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0025",
+    "date": "2026-08-28",
+    "amount": "1399.1",
+    "currency": "USD",
+    "reference": "REF-158983",
+    "description": "Kennedy Ltd",
+    "invoice_number": "INV-96132",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0026",
+    "date": "2026-08-10",
+    "amount": "174.31",
+    "currency": "USD",
+    "reference": "REF-350004",
+    "description": "Phillips, Calderon and Peters",
+    "invoice_number": "INV-65107",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0027",
+    "date": "2026-08-05",
+    "amount": "366.49",
+    "currency": "USD",
+    "reference": "REF-595512",
+    "description": "Johnson Group",
+    "invoice_number": "INV-78648",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0028",
+    "date": "2026-08-21",
+    "amount": "3490.9",
+    "currency": "USD",
+    "reference": "REF-408850",
+    "description": "Martin LLC",
+    "invoice_number": "INV-39088",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0029",
+    "date": "2026-08-27",
+    "amount": "2407.52",
+    "currency": "USD",
+    "reference": "REF-681904",
+    "description": "Briggs Ltd",
+    "invoice_number": "INV-86677",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0030",
+    "date": "2026-08-06",
+    "amount": "142.15",
+    "currency": "USD",
+    "reference": "REF-242278",
+    "description": "Greene PLC",
+    "invoice_number": "INV-70082",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0031",
+    "date": "2026-08-07",
+    "amount": "870.07",
+    "currency": "USD",
+    "reference": "REF-177898",
+    "description": "Hill-Graves",
+    "invoice_number": "INV-52032",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0032",
+    "date": "2026-08-07",
+    "amount": "4281.92",
+    "currency": "USD",
+    "reference": "REF-946843",
+    "description": "Coleman-Andrews",
+    "invoice_number": "INV-99743",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0033",
+    "date": "2026-08-06",
+    "amount": "3153.66",
+    "currency": "USD",
+    "reference": "REF-711247",
+    "description": "Mora Ltd",
+    "invoice_number": "INV-79064",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0034",
+    "date": "2026-08-14",
+    "amount": "1457.76",
+    "currency": "USD",
+    "reference": "REF-262704",
+    "description": "Owens, Cox and Phelps",
+    "invoice_number": "INV-13713",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0035",
+    "date": "2026-08-28",
+    "amount": "2490.96",
+    "currency": "USD",
+    "reference": "REF-545498",
+    "description": "Clark, Castillo and Fitzgerald",
+    "invoice_number": "INV-37485",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0036",
+    "date": "2026-08-19",
+    "amount": "4426.32",
+    "currency": "USD",
+    "reference": "REF-132902",
+    "description": "Hall, Jackson and Jones",
+    "invoice_number": "INV-44801",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0037",
+    "date": "2026-08-24",
+    "amount": "4359.63",
+    "currency": "USD",
+    "reference": "REF-814967",
+    "description": "Huynh, Montgomery and Hines",
+    "invoice_number": "INV-71036",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0038",
+    "date": "2026-08-12",
+    "amount": "3310.64",
+    "currency": "USD",
+    "reference": "REF-993548",
+    "description": "Stone, Rice and Sampson",
+    "invoice_number": "INV-14956",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0039",
+    "date": "2026-08-18",
+    "amount": "1094.32",
+    "currency": "USD",
+    "reference": "REF-994722",
+    "description": "Byrd, Mcneil and Mccall",
+    "invoice_number": "INV-72915",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0040",
+    "date": "2026-08-05",
+    "amount": "3868.23",
+    "currency": "USD",
+    "reference": "REF-954197",
+    "description": "Dunn, Lawrence and Jones",
+    "invoice_number": "INV-89797",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0041",
+    "date": "2026-08-08",
+    "amount": "4158.11",
+    "currency": "USD",
+    "reference": "REF-279856",
+    "description": "Roberts PLC",
+    "invoice_number": "INV-70715",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0042",
+    "date": "2026-08-02",
+    "amount": "3084.14",
+    "currency": "USD",
+    "reference": "REF-462330",
+    "description": "Eaton-Stone",
+    "invoice_number": "INV-91066",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0043",
+    "date": "2026-08-25",
+    "amount": "3667.11",
+    "currency": "USD",
+    "reference": "REF-797193",
+    "description": "Yang, Schmidt and Gilbert",
+    "invoice_number": "INV-77956",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0044",
+    "date": "2026-08-17",
+    "amount": "1412.51",
+    "currency": "USD",
+    "reference": "REF-451670",
+    "description": "Richardson-Cabrera",
+    "invoice_number": "INV-89683",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0045",
+    "date": "2026-08-28",
+    "amount": "4851.44",
+    "currency": "USD",
+    "reference": "REF-897013",
+    "description": "Palmer, Smith and Diaz",
+    "invoice_number": "INV-80528",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0046",
+    "date": "2026-08-08",
+    "amount": "3113.53",
+    "currency": "USD",
+    "reference": "REF-993738",
+    "description": "Boone, Torres and Daniel",
+    "invoice_number": "INV-19857",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0047",
+    "date": "2026-08-08",
+    "amount": "1514.34",
+    "currency": "USD",
+    "reference": "REF-202905",
+    "description": "Becker-Tucker",
+    "invoice_number": "INV-91005",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0048",
+    "date": "2026-08-07",
+    "amount": "2745.06",
+    "currency": "USD",
+    "reference": "REF-166893",
+    "description": "Adams Group",
+    "invoice_number": "INV-78180",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0049",
+    "date": "2026-08-14",
+    "amount": "2793.04",
+    "currency": "USD",
+    "reference": "REF-970955",
+    "description": "Mercado LLC",
+    "invoice_number": "INV-90665",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0050",
+    "date": "2026-08-12",
+    "amount": "4029.19",
+    "currency": "USD",
+    "reference": "REF-955382",
+    "description": "Estrada-Mcneil",
+    "invoice_number": "INV-10612",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0051",
+    "date": "2026-08-20",
+    "amount": "47.75",
+    "currency": "USD",
+    "reference": "REF-109634",
+    "description": "Dawson-Wood",
+    "invoice_number": "INV-84397",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0052",
+    "date": "2026-08-24",
+    "amount": "2807.57",
+    "currency": "USD",
+    "reference": "REF-988210",
+    "description": "Meza LLC",
+    "invoice_number": "INV-75385",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0053",
+    "date": "2026-08-28",
+    "amount": "3831.75",
+    "currency": "USD",
+    "reference": "REF-250851",
+    "description": "Craig Group",
+    "invoice_number": "INV-69374",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0054",
+    "date": "2026-08-26",
+    "amount": "2557.34",
+    "currency": "USD",
+    "reference": "REF-907685",
+    "description": "Hopkins-Ritter",
+    "invoice_number": "INV-29942",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0055",
+    "date": "2026-08-19",
+    "amount": "1017.79",
+    "currency": "USD",
+    "reference": "REF-389935",
+    "description": "Stewart-Hale",
+    "invoice_number": "INV-58814",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0056",
+    "date": "2026-08-06",
+    "amount": "1759.21",
+    "currency": "USD",
+    "reference": "REF-845838",
+    "description": "English, Mason and Stevens",
+    "invoice_number": "INV-24142",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0057",
+    "date": "2026-08-01",
+    "amount": "4977.64",
+    "currency": "USD",
+    "reference": "REF-382483",
+    "description": "Peterson PLC",
+    "invoice_number": "INV-53151",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0058",
+    "date": "2026-08-27",
+    "amount": "3934.67",
+    "currency": "USD",
+    "reference": "REF-505230",
+    "description": "Boyd-Wood",
+    "invoice_number": "INV-52127",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0059",
+    "date": "2026-08-28",
+    "amount": "115.09",
+    "currency": "USD",
+    "reference": "REF-936728",
+    "description": "Wheeler LLC",
+    "invoice_number": "INV-60704",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0060",
+    "date": "2026-08-25",
+    "amount": "3671.39",
+    "currency": "USD",
+    "reference": "REF-348782",
+    "description": "Johnson PLC",
+    "invoice_number": "INV-53673",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0061",
+    "date": "2026-08-01",
+    "amount": "2421.22",
+    "currency": "USD",
+    "reference": "REF-898518",
+    "description": "Rodriguez LLC",
+    "invoice_number": "INV-40925",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0063",
+    "date": "2026-08-11",
+    "amount": "2476.34",
+    "currency": "USD",
+    "reference": "REF-704772",
+    "description": "Day-Scott",
+    "invoice_number": "INV-51373",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0065",
+    "date": "2026-08-17",
+    "amount": "2371.83",
+    "currency": "USD",
+    "reference": "REF-488371",
+    "description": "Webb-Underwood",
+    "invoice_number": "INV-77098",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0067",
+    "date": "2026-08-07",
+    "amount": "3128.03",
+    "currency": "USD",
+    "reference": "REF-628329",
+    "description": "Chapman Group",
+    "invoice_number": "INV-50503",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0069",
+    "date": "2026-08-03",
+    "amount": "163.48",
+    "currency": "USD",
+    "reference": "REF-641870",
+    "description": "Manning PLC",
+    "invoice_number": "INV-18402",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0071",
+    "date": "2026-08-04",
+    "amount": "3598.1",
+    "currency": "USD",
+    "reference": "REF-403099",
+    "description": "Smith PLC",
+    "invoice_number": "INV-54251",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0073",
+    "date": "2026-08-21",
+    "amount": "2790.52",
+    "currency": "USD",
+    "reference": "REF-367488",
+    "description": "Drake-Rogers",
+    "invoice_number": "INV-52701",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0075",
+    "date": "2026-08-16",
+    "amount": "1573.73",
+    "currency": "USD",
+    "reference": "REF-961464",
+    "description": "Salas Ltd",
+    "invoice_number": "INV-70940",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0077",
+    "date": "2026-08-07",
+    "amount": "3096.96",
+    "currency": "EUR",
+    "reference": "REF-283391",
+    "description": "Scott-Smith",
+    "invoice_number": "INV-63816",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0078",
+    "date": "2026-08-24",
+    "amount": "3038.25",
+    "currency": "EUR",
+    "reference": "REF-693973",
+    "description": "Atkins-Lopez",
+    "invoice_number": "INV-24410",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0079",
+    "date": "2026-08-02",
+    "amount": "3094.32",
+    "currency": "GBP",
+    "reference": "REF-459067",
+    "description": "Mason-Lopez",
+    "invoice_number": "INV-67942",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0080",
+    "date": "2026-08-27",
+    "amount": "71.95",
+    "currency": "GBP",
+    "reference": "REF-772923",
+    "description": "Taylor, Zimmerman and Thomas",
+    "invoice_number": "INV-69836",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0081",
+    "date": "2026-08-01",
+    "amount": "1356.29",
+    "currency": "EUR",
+    "reference": "REF-915465",
+    "description": "Chambers-Adams",
+    "invoice_number": "INV-72312",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0082",
+    "date": "2026-08-07",
+    "amount": "2034.63",
+    "currency": "EUR",
+    "reference": "REF-624801",
+    "description": "Wilson-Hoffman",
+    "invoice_number": "INV-77160",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0083",
+    "date": "2026-08-27",
+    "amount": "3041.39",
+    "currency": "EUR",
+    "reference": "REF-247197",
+    "description": "Berger, Mathis and Gibson",
+    "invoice_number": "INV-26396",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0084",
+    "date": "2026-08-13",
+    "amount": "2583.76",
+    "currency": "GBP",
+    "reference": "REF-805500",
+    "description": "Johnson-Levine",
+    "invoice_number": "INV-26696",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0085",
+    "date": "2026-08-09",
+    "amount": "1828.21",
+    "currency": "USD",
+    "reference": "REF-221368",
+    "description": "Lee and Sons",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0086",
+    "date": "2026-08-18",
+    "amount": "3375.86",
+    "currency": "USD",
+    "reference": "REF-788147",
+    "description": "Floyd, Ali and Wilson",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0087",
+    "date": "2026-08-28",
+    "amount": "2642.05",
+    "currency": "USD",
+    "reference": "REF-577460",
+    "description": "Cunningham-Waller",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0088",
+    "date": "2026-08-14",
+    "amount": "178.36",
+    "currency": "USD",
+    "reference": "REF-207337",
+    "description": "Rodriguez Inc",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0089",
+    "date": "2026-08-07",
+    "amount": "1953.9",
+    "currency": "USD",
+    "reference": "REF-238115",
+    "description": "Mercer-Lara",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0090",
+    "date": "2026-08-26",
+    "amount": "4338.29",
+    "currency": "USD",
+    "reference": "REF-910243",
+    "description": "Watts Group",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0091",
+    "date": "2026-08-19",
+    "amount": "1636.03",
+    "currency": "USD",
+    "reference": "REF-692633",
+    "description": "Johnson, French and Ayala",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0092",
+    "date": "2026-08-01",
+    "amount": "590.03",
+    "currency": "USD",
+    "reference": "REF-214874",
+    "description": "Owen Group",
+    "invoice_number": "INV-00000",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0093",
+    "date": "2026-08-07",
+    "amount": "4224.85",
+    "currency": "USD",
+    "reference": "REF-352754",
+    "description": "Smith, Roberts and Russell",
+    "invoice_number": "INV-13721",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0094",
+    "date": "2026-08-23",
+    "amount": "226.79",
+    "currency": "USD",
+    "reference": "REF-559031",
+    "description": "Johnson, Miller and Martinez",
+    "invoice_number": "INV-99780",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0095",
+    "date": "2026-08-01",
+    "amount": "3688.72",
+    "currency": "USD",
+    "reference": "REF-926426",
+    "description": "Acosta Inc",
+    "invoice_number": "INV-19095",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0096",
+    "date": "2026-08-07",
+    "amount": "4209.08",
+    "currency": "USD",
+    "reference": "REF-190549",
+    "description": "Hunt-Williams",
+    "invoice_number": "INV-66337",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0097",
+    "date": "2026-08-22",
+    "amount": "23.97",
+    "currency": "USD",
+    "reference": "REF-722066",
+    "description": "Martin, Sullivan and Gardner",
+    "invoice_number": "INV-47732",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0098",
+    "date": "2026-08-17",
+    "amount": "2142.55",
+    "currency": "USD",
+    "reference": "REF-728280",
+    "description": "James, Snow and Ramirez",
+    "invoice_number": "INV-14714",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0099",
+    "date": "2026-08-03",
+    "amount": "1924.65",
+    "currency": "USD",
+    "reference": "REF-226576",
+    "description": "Walker, Gutierrez and Williams",
+    "invoice_number": "INV-68501",
+    "dataset_split": "tuning"
+  },
+  {
+    "id": "TUNE-LED-0100",
+    "date": "2026-08-06",
+    "amount": "3821.81",
+    "currency": "USD",
+    "reference": "REF-108111",
+    "description": "Martin Inc",
+    "invoice_number": "INV-19358",
+    "dataset_split": "tuning"
+  }
+]

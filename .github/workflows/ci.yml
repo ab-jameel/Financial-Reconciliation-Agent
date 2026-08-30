@@ -40,5 +40,5 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgresql+asyncpg://recon:recon_dev_only@localhost:5432/reconciliation
-        run: uv run pytest -v
+          DATABASE_URL: postgresql+asyncpg://recon:recon_dev_only@localhost:5433/reconciliation
+        run: uv run pytest -v --timeout=120

@@ -1,0 +1,14 @@
+{
+  "generator_version": "v1",
+  "seed": 20260828,
+  "split": "tuning",
+  "counts": {
+    "clean_match": 40,
+    "amount_mismatch": 10,
+    "date_mismatch": 10,
+    "duplicate": 8,
+    "currency_issue": 8,
+    "missing_invoice": 8,
+    "policy_sensitive": 8
+  }
+}

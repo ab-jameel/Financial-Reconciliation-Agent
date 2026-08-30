@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "HOLD-TXN-0001",
+    "date": "2026-08-20",
+    "amount": "2170.88",
+    "currency": "USD",
+    "reference": "REF-457422",
+    "description": "Jenkins, Hays and Douglas",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0002",
+    "date": "2026-08-21",
+    "amount": "376.7",
+    "currency": "USD",
+    "reference": "REF-143805",
+    "description": "Williams Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0003",
+    "date": "2026-08-05",
+    "amount": "4227.95",
+    "currency": "USD",
+    "reference": "REF-879580",
+    "description": "Ballard Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0004",
+    "date": "2026-08-02",
+    "amount": "4635.86",
+    "currency": "USD",
+    "reference": "REF-166385",
+    "description": "Khan Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0005",
+    "date": "2026-08-06",
+    "amount": "3696.47",
+    "currency": "USD",
+    "reference": "REF-560570",
+    "description": "Good, Warner and Taylor",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0006",
+    "date": "2026-08-18",
+    "amount": "1343.04",
+    "currency": "USD",
+    "reference": "REF-633916",
+    "description": "Frey-Martin",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0007",
+    "date": "2026-08-01",
+    "amount": "2981.38",
+    "currency": "USD",
+    "reference": "REF-143718",
+    "description": "Williams, Moore and Finley",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0008",
+    "date": "2026-08-23",
+    "amount": "481.02",
+    "currency": "USD",
+    "reference": "REF-885879",
+    "description": "Brady Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0009",
+    "date": "2026-08-25",
+    "amount": "1669.07",
+    "currency": "USD",
+    "reference": "REF-377616",
+    "description": "Baker-Flores",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0010",
+    "date": "2026-08-11",
+    "amount": "1317.16",
+    "currency": "USD",
+    "reference": "REF-541947",
+    "description": "Martin-Fitzgerald",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0011",
+    "date": "2026-08-24",
+    "amount": "2319.5",
+    "currency": "USD",
+    "reference": "REF-484204",
+    "description": "Harrell-Kelly",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0012",
+    "date": "2026-08-12",
+    "amount": "3229.49",
+    "currency": "USD",
+    "reference": "REF-734091",
+    "description": "Klein, Farrell and Campos",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0013",
+    "date": "2026-08-28",
+    "amount": "1661",
+    "currency": "USD",
+    "reference": "REF-892033",
+    "description": "Walsh-Mosley",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0014",
+    "date": "2026-08-21",
+    "amount": "996.53",
+    "currency": "USD",
+    "reference": "REF-301585",
+    "description": "Coleman Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0015",
+    "date": "2026-08-14",
+    "amount": "362.79",
+    "currency": "USD",
+    "reference": "REF-568549",
+    "description": "Davis-Price",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0016",
+    "date": "2026-08-03",
+    "amount": "4187",
+    "currency": "USD",
+    "reference": "REF-507682",
+    "description": "Smith Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0017",
+    "date": "2026-08-01",
+    "amount": "2537",
+    "currency": "USD",
+    "reference": "REF-184022",
+    "description": "Rodriguez Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0018",
+    "date": "2026-08-04",
+    "amount": "2909.67",
+    "currency": "USD",
+    "reference": "REF-571179",
+    "description": "Medina-Hester",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0019",
+    "date": "2026-08-18",
+    "amount": "3062.71",
+    "currency": "USD",
+    "reference": "REF-663043",
+    "description": "Johnson Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0020",
+    "date": "2026-08-01",
+    "amount": "3034.88",
+    "currency": "USD",
+    "reference": "REF-155419",
+    "description": "Snyder, Brown and Schroeder",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0021",
+    "date": "2026-08-03",
+    "amount": "889.83",
+    "currency": "USD",
+    "reference": "REF-911825",
+    "description": "Watson, Smith and Kennedy",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0022",
+    "date": "2026-08-23",
+    "amount": "1964.14",
+    "currency": "USD",
+    "reference": "REF-424612",
+    "description": "Byrd-Medina",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0023",
+    "date": "2026-08-15",
+    "amount": "2487.49",
+    "currency": "USD",
+    "reference": "REF-400892",
+    "description": "Clarke Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0024",
+    "date": "2026-08-22",
+    "amount": "4361.33",
+    "currency": "USD",
+    "reference": "REF-663702",
+    "description": "Phillips-Erickson",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0025",
+    "date": "2026-08-26",
+    "amount": "4629.73",
+    "currency": "USD",
+    "reference": "REF-561664",
+    "description": "Perez, Hall and Hill",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0026",
+    "date": "2026-08-10",
+    "amount": "4773.37",
+    "currency": "USD",
+    "reference": "REF-842873",
+    "description": "Gibbs, Wright and Young",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0027",
+    "date": "2026-08-08",
+    "amount": "1144.4",
+    "currency": "USD",
+    "reference": "REF-343348",
+    "description": "Meyer-Walsh",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0028",
+    "date": "2026-08-09",
+    "amount": "1562.48",
+    "currency": "USD",
+    "reference": "REF-713230",
+    "description": "Graham, Turner and Smith",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0029",
+    "date": "2026-08-08",
+    "amount": "3244.93",
+    "currency": "USD",
+    "reference": "REF-346213",
+    "description": "Valenzuela, Griffin and Harris",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0030",
+    "date": "2026-08-11",
+    "amount": "2741.67",
+    "currency": "USD",
+    "reference": "REF-374883",
+    "description": "Hall Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0031",
+    "date": "2026-08-02",
+    "amount": "2799.34",
+    "currency": "USD",
+    "reference": "REF-557489",
+    "description": "Rivera-Webb",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0032",
+    "date": "2026-08-28",
+    "amount": "78.12",
+    "currency": "USD",
+    "reference": "REF-379292",
+    "description": "Moore, Dickson and Martin",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0033",
+    "date": "2026-08-11",
+    "amount": "2346.55",
+    "currency": "USD",
+    "reference": "REF-306531",
+    "description": "Kelley PLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0034",
+    "date": "2026-08-03",
+    "amount": "907.36",
+    "currency": "USD",
+    "reference": "REF-342405",
+    "description": "Duncan-Tapia",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0035",
+    "date": "2026-08-26",
+    "amount": "2168.68",
+    "currency": "USD",
+    "reference": "REF-438975",
+    "description": "Perez-Dixon",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0036",
+    "date": "2026-08-12",
+    "amount": "2545.27",
+    "currency": "USD",
+    "reference": "REF-963863",
+    "description": "Wood, Kennedy and Wilkerson",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0037",
+    "date": "2026-08-28",
+    "amount": "123.91",
+    "currency": "USD",
+    "reference": "REF-268276",
+    "description": "Burch-White",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0038",
+    "date": "2026-08-18",
+    "amount": "1892.75",
+    "currency": "USD",
+    "reference": "REF-696758",
+    "description": "Heath-Johnson",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0039",
+    "date": "2026-08-19",
+    "amount": "3947.15",
+    "currency": "USD",
+    "reference": "REF-414707",
+    "description": "Barker, Guerra and Vargas",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0040",
+    "date": "2026-08-08",
+    "amount": "2686.92",
+    "currency": "USD",
+    "reference": "REF-809066",
+    "description": "Brown-Wilkinson",
+    "dataset_split": "held_out",
+    "label_exception_type": "clean_match"
+  },
+  {
+    "id": "HOLD-TXN-0041",
+    "date": "2026-08-07",
+    "amount": "2490.11",
+    "currency": "USD",
+    "reference": "REF-360654",
+    "description": "Craig-Goodwin",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0042",
+    "date": "2026-08-06",
+    "amount": "963.2",
+    "currency": "USD",
+    "reference": "REF-388346",
+    "description": "Watson LLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0043",
+    "date": "2026-08-21",
+    "amount": "3618.78",
+    "currency": "USD",
+    "reference": "REF-153712",
+    "description": "Cook, Watson and Taylor",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0044",
+    "date": "2026-08-13",
+    "amount": "319.69",
+    "currency": "USD",
+    "reference": "REF-910347",
+    "description": "Allen and Sons",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0045",
+    "date": "2026-08-22",
+    "amount": "1404.29",
+    "currency": "USD",
+    "reference": "REF-889166",
+    "description": "Mcconnell-Stewart",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0046",
+    "date": "2026-08-12",
+    "amount": "244.3",
+    "currency": "USD",
+    "reference": "REF-927911",
+    "description": "Glenn, Baker and Harper",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0047",
+    "date": "2026-08-11",
+    "amount": "610.69",
+    "currency": "USD",
+    "reference": "REF-488962",
+    "description": "Gardner Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0048",
+    "date": "2026-08-06",
+    "amount": "1279.04",
+    "currency": "USD",
+    "reference": "REF-698267",
+    "description": "Martinez-Smith",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0049",
+    "date": "2026-08-24",
+    "amount": "1677.35",
+    "currency": "USD",
+    "reference": "REF-695564",
+    "description": "Stokes, Ali and Wiley",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0050",
+    "date": "2026-08-09",
+    "amount": "3086.04",
+    "currency": "USD",
+    "reference": "REF-726262",
+    "description": "Guzman, Thomas and Bowers",
+    "dataset_split": "held_out",
+    "label_exception_type": "amount_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0051",
+    "date": "2026-08-18",
+    "amount": "2565.19",
+    "currency": "USD",
+    "reference": "REF-583808",
+    "description": "James-Campos",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0052",
+    "date": "2026-08-12",
+    "amount": "37.38",
+    "currency": "USD",
+    "reference": "REF-837362",
+    "description": "Shea, Shaffer and Hale",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0053",
+    "date": "2026-08-19",
+    "amount": "3334.56",
+    "currency": "USD",
+    "reference": "REF-730765",
+    "description": "Barajas, Dunn and Smith",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0054",
+    "date": "2026-08-15",
+    "amount": "4120.3",
+    "currency": "USD",
+    "reference": "REF-293362",
+    "description": "Ferrell-Guerrero",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0055",
+    "date": "2026-08-22",
+    "amount": "3971.42",
+    "currency": "USD",
+    "reference": "REF-773027",
+    "description": "Keller Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0056",
+    "date": "2026-08-10",
+    "amount": "4614.68",
+    "currency": "USD",
+    "reference": "REF-899558",
+    "description": "Page Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0057",
+    "date": "2026-08-18",
+    "amount": "570.89",
+    "currency": "USD",
+    "reference": "REF-112645",
+    "description": "Robinson, Davis and Melendez",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0058",
+    "date": "2026-08-22",
+    "amount": "354.95",
+    "currency": "USD",
+    "reference": "REF-209179",
+    "description": "Rodriguez, Porter and Mckenzie",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0059",
+    "date": "2026-08-06",
+    "amount": "3734.4",
+    "currency": "USD",
+    "reference": "REF-863724",
+    "description": "Love Ltd",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0060",
+    "date": "2026-08-07",
+    "amount": "2464.08",
+    "currency": "USD",
+    "reference": "REF-202425",
+    "description": "Randall, Munoz and Padilla",
+    "dataset_split": "held_out",
+    "label_exception_type": "date_mismatch"
+  },
+  {
+    "id": "HOLD-TXN-0061",
+    "date": "2026-08-17",
+    "amount": "4341.97",
+    "currency": "USD",
+    "reference": "REF-652174",
+    "description": "Stewart Ltd",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0062",
+    "date": "2026-08-17",
+    "amount": "4341.97",
+    "currency": "USD",
+    "reference": "REF-652174",
+    "description": "Stewart Ltd",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0063",
+    "date": "2026-08-23",
+    "amount": "2940.67",
+    "currency": "USD",
+    "reference": "REF-762320",
+    "description": "Hamilton, Bowers and Richards",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0064",
+    "date": "2026-08-23",
+    "amount": "2940.67",
+    "currency": "USD",
+    "reference": "REF-762320",
+    "description": "Hamilton, Bowers and Richards",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0065",
+    "date": "2026-08-27",
+    "amount": "4903.08",
+    "currency": "USD",
+    "reference": "REF-733019",
+    "description": "Barber PLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0066",
+    "date": "2026-08-27",
+    "amount": "4903.08",
+    "currency": "USD",
+    "reference": "REF-733019",
+    "description": "Barber PLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0067",
+    "date": "2026-08-23",
+    "amount": "2226.79",
+    "currency": "USD",
+    "reference": "REF-908299",
+    "description": "Parrish LLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0068",
+    "date": "2026-08-23",
+    "amount": "2226.79",
+    "currency": "USD",
+    "reference": "REF-908299",
+    "description": "Parrish LLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0069",
+    "date": "2026-08-11",
+    "amount": "1997.74",
+    "currency": "USD",
+    "reference": "REF-858679",
+    "description": "Sullivan-Thomas",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0070",
+    "date": "2026-08-11",
+    "amount": "1997.74",
+    "currency": "USD",
+    "reference": "REF-858679",
+    "description": "Sullivan-Thomas",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0071",
+    "date": "2026-08-14",
+    "amount": "4829.72",
+    "currency": "USD",
+    "reference": "REF-922090",
+    "description": "Thomas LLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0072",
+    "date": "2026-08-14",
+    "amount": "4829.72",
+    "currency": "USD",
+    "reference": "REF-922090",
+    "description": "Thomas LLC",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0073",
+    "date": "2026-08-07",
+    "amount": "89.21",
+    "currency": "USD",
+    "reference": "REF-861751",
+    "description": "Hawkins Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0074",
+    "date": "2026-08-07",
+    "amount": "89.21",
+    "currency": "USD",
+    "reference": "REF-861751",
+    "description": "Hawkins Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0075",
+    "date": "2026-08-17",
+    "amount": "931.51",
+    "currency": "USD",
+    "reference": "REF-705864",
+    "description": "Mack, Ramirez and Phelps",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0076",
+    "date": "2026-08-17",
+    "amount": "931.51",
+    "currency": "USD",
+    "reference": "REF-705864",
+    "description": "Mack, Ramirez and Phelps",
+    "dataset_split": "held_out",
+    "label_exception_type": "duplicate"
+  },
+  {
+    "id": "HOLD-TXN-0077",
+    "date": "2026-08-16",
+    "amount": "2135.88",
+    "currency": "USD",
+    "reference": "REF-128451",
+    "description": "Foster, Mcconnell and Roach",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0078",
+    "date": "2026-08-05",
+    "amount": "411.97",
+    "currency": "USD",
+    "reference": "REF-453779",
+    "description": "Riley, Finley and Burgess",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0079",
+    "date": "2026-08-03",
+    "amount": "3494.38",
+    "currency": "USD",
+    "reference": "REF-906177",
+    "description": "Hunt Inc",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0080",
+    "date": "2026-08-28",
+    "amount": "4444.98",
+    "currency": "USD",
+    "reference": "REF-735632",
+    "description": "Page-Campbell",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0081",
+    "date": "2026-08-01",
+    "amount": "2695.47",
+    "currency": "USD",
+    "reference": "REF-422513",
+    "description": "Ruiz, Henderson and Lewis",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0082",
+    "date": "2026-08-23",
+    "amount": "421.13",
+    "currency": "USD",
+    "reference": "REF-395460",
+    "description": "Goodwin, Adams and Stokes",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0083",
+    "date": "2026-08-11",
+    "amount": "2231.12",
+    "currency": "USD",
+    "reference": "REF-141145",
+    "description": "Medina, Webb and Stewart",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0084",
+    "date": "2026-08-21",
+    "amount": "3956.06",
+    "currency": "USD",
+    "reference": "REF-249890",
+    "description": "Mitchell-Thompson",
+    "dataset_split": "held_out",
+    "label_exception_type": "currency_issue"
+  },
+  {
+    "id": "HOLD-TXN-0085",
+    "date": "2026-08-26",
+    "amount": "2339.43",
+    "currency": "USD",
+    "reference": "REF-971763",
+    "description": "Ford Ltd",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0086",
+    "date": "2026-08-11",
+    "amount": "2541.79",
+    "currency": "USD",
+    "reference": "REF-430763",
+    "description": "Brown-Walker",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0087",
+    "date": "2026-08-12",
+    "amount": "1513.42",
+    "currency": "USD",
+    "reference": "REF-181746",
+    "description": "Riddle, Santos and Bishop",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0088",
+    "date": "2026-08-01",
+    "amount": "2437.53",
+    "currency": "USD",
+    "reference": "REF-173101",
+    "description": "Howell Ltd",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0089",
+    "date": "2026-08-02",
+    "amount": "3609.25",
+    "currency": "USD",
+    "reference": "REF-334255",
+    "description": "Hoffman-Johnson",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0090",
+    "date": "2026-08-19",
+    "amount": "3363.54",
+    "currency": "USD",
+    "reference": "REF-781281",
+    "description": "Ross-Taylor",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0091",
+    "date": "2026-08-23",
+    "amount": "438.26",
+    "currency": "USD",
+    "reference": "REF-751629",
+    "description": "Meyers, Melendez and Figueroa",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0092",
+    "date": "2026-08-18",
+    "amount": "4608.34",
+    "currency": "USD",
+    "reference": "REF-124661",
+    "description": "Bush-Allen",
+    "dataset_split": "held_out",
+    "label_exception_type": "missing_invoice"
+  },
+  {
+    "id": "HOLD-TXN-0093",
+    "date": "2026-08-15",
+    "amount": "2100.85",
+    "currency": "USD",
+    "reference": "REF-599895",
+    "description": "Jones, Brown and Mullen",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0094",
+    "date": "2026-08-23",
+    "amount": "4965.26",
+    "currency": "USD",
+    "reference": "REF-670853",
+    "description": "Frey-Holland",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0095",
+    "date": "2026-08-24",
+    "amount": "1526.13",
+    "currency": "USD",
+    "reference": "REF-487260",
+    "description": "Smith, Fields and Martin",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0096",
+    "date": "2026-08-08",
+    "amount": "3473.13",
+    "currency": "USD",
+    "reference": "REF-174381",
+    "description": "Gray, Jones and Forbes",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0097",
+    "date": "2026-08-03",
+    "amount": "2492.99",
+    "currency": "USD",
+    "reference": "REF-480196",
+    "description": "Martin, Kennedy and Cochran",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0098",
+    "date": "2026-08-19",
+    "amount": "43.61",
+    "currency": "USD",
+    "reference": "REF-988342",
+    "description": "Carlson-Higgins",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0099",
+    "date": "2026-08-01",
+    "amount": "868.39",
+    "currency": "USD",
+    "reference": "REF-843919",
+    "description": "Wu Group",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  },
+  {
+    "id": "HOLD-TXN-0100",
+    "date": "2026-08-13",
+    "amount": "407.34",
+    "currency": "USD",
+    "reference": "REF-642030",
+    "description": "Suarez, Powers and Wilcox",
+    "dataset_split": "held_out",
+    "label_exception_type": "policy_sensitive"
+  }
+]

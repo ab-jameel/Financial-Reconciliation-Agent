@@ -11,6 +11,9 @@ dependencies = [
     "litellm>=1.44",
     "httpx>=0.27",
     "recon-common",
+    "fastembed>=0.3",
+    "rapidfuzz>=3.9",
+    "psycopg2-binary>=2.9.12",
 ]
 
 [tool.uv.sources]

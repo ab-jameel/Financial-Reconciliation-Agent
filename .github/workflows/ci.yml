@@ -17,7 +17,7 @@ jobs:
           POSTGRES_PASSWORD: recon_dev_only
           POSTGRES_DB: reconciliation
         ports:
-          - 5432:5432
+          - 5433:5432
         options: >-
           --health-cmd "pg_isready -U recon"
           --health-interval 5s
@@ -40,5 +40,6 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgresql+asyncpg://recon:recon_dev_only@localhost:5433/reconciliation
+          DATABASE_URL: postgresql+asyncpg://recon:recon_dev_only@localhost:5432/reconciliation
+          POSTGRES_CHECKPOINT_URI: postgresql://recon:recon_dev_only@localhost:5432/reconciliation
         run: uv run pytest -v --timeout=120

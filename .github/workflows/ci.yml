@@ -23,6 +23,10 @@ jobs:
           --health-interval 5s
           --health-timeout 5s
           --health-retries 5
+      qdrant:
+        image: qdrant/qdrant:latest
+        ports:
+          - 6333:6333
 
     steps:
       - uses: actions/checkout@v4
@@ -43,3 +47,6 @@ jobs:
           DATABASE_URL: postgresql+asyncpg://recon:recon_dev_only@localhost:5432/reconciliation
           POSTGRES_CHECKPOINT_URI: postgresql://recon:recon_dev_only@localhost:5432/reconciliation
         run: uv run pytest -v --timeout=120
+
+      - name: Load policy corpus into Qdrant
+        run: uv run python data/load_policies_to_qdrant.py

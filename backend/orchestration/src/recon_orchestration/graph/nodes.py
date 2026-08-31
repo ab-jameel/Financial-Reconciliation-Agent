@@ -3,6 +3,10 @@ from langgraph.types import interrupt
 from recon_common.models import Transaction, LedgerEntry, MatchStatus
 from recon_orchestration.matcher.deterministic import match_deterministic
 from recon_orchestration.matcher.ranking import rank_candidates
+import asyncio
+from recon_orchestration.investigator.loop import investigate
+import os
+
 
 MAX_REINVESTIGATION_CYCLES = 2
 
@@ -34,13 +38,13 @@ def close_case_node(state):
 
 
 def investigator_node(state):
-    # Placeholder until Phase 3's ReAct + Reflection investigator. Note this
-    # produces a proposal, full stop — nothing here can set approval_state.
+    if os.environ.get("RECON_FAKE_INVESTIGATOR") == "1":
+        return {"proposed_disposition": {"confidence": 0.5, "explanation": "stress-test stub", "disposition": "exception"}}
+    txn = state["transaction"]
+    ledgers = state.get("candidate_ledger_entries", [])
     reason = state.get("rejection_reason")
-    explanation = "Placeholder investigator output (Phase 3 replaces this)."
-    if reason:
-        explanation += f" Reinvestigating after rejection: {reason}"
-    return {"proposed_disposition": {"confidence": 0.5, "explanation": explanation}}
+    disposition = asyncio.run(investigate(txn, ledgers, reason))
+    return {"proposed_disposition": disposition}
 
 
 def prepare_review_node(state):

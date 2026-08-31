@@ -3,6 +3,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
 from recon_orchestration.graph.build import build_graph
 from recon_orchestration.graph.state import GRAPH_VERSION
+from unittest.mock import patch
 
 
 def _txn(amount="100.00"):
@@ -25,6 +26,17 @@ def _run(graph, thread_id, txn_amount):
         "rejection_cycle_count": 0,
     }, config=config), config
 
+def _fake_completion(*args, **kwargs):
+    class FakeMessage:
+        tool_calls = None
+        content = '{"confidence": 0.5, "explanation": "stub", "disposition": "exception"}'
+        def model_dump(self): return {"role": "assistant", "content": self.content}
+    class FakeChoice:
+        message = FakeMessage()
+    class FakeResponse:
+        choices = [FakeChoice()]
+    return FakeResponse()
+
 
 def test_matched_transaction_closes_without_review():
     graph = build_graph(MemorySaver())
@@ -33,7 +45,10 @@ def test_matched_transaction_closes_without_review():
     assert "__interrupt__" not in result
 
 
-def test_exception_pauses_with_persisted_payload():
+@patch("recon_orchestration.investigator.loop.litellm.completion", side_effect=_fake_completion)
+@patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
+@patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
+def test_exception_pauses_with_persisted_payload(mock_policy, mock_related, mock_llm):
     graph = build_graph(MemorySaver())
     result, config = _run(graph, "t-exception", "105.00")
     assert "__interrupt__" in result
@@ -41,7 +56,10 @@ def test_exception_pauses_with_persisted_payload():
     assert snapshot.values["pending_review"]["case_id"] == "t-exception"
 
 
-def test_approval_reaches_write_back():
+@patch("recon_orchestration.investigator.loop.litellm.completion", side_effect=_fake_completion)
+@patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
+@patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
+def test_approval_reaches_write_back(mock_policy, mock_related, mock_llm):
     graph = build_graph(MemorySaver())
     _, config = _run(graph, "t-approve", "105.00")
     result = graph.invoke(Command(resume={"decision": "approve"}), config=config)
@@ -49,7 +67,10 @@ def test_approval_reaches_write_back():
     assert result["case_status"] == "posted_placeholder"
 
 
-def test_rejection_cycles_then_escalates():
+@patch("recon_orchestration.investigator.loop.litellm.completion", side_effect=_fake_completion)
+@patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
+@patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
+def test_rejection_cycles_then_escalates(mock_policy, mock_related, mock_llm):
     graph = build_graph(MemorySaver())
     _, config = _run(graph, "t-reject", "105.00")
     for _ in range(2):

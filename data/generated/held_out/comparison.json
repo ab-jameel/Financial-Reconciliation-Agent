@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "precision": 0.4,
+    "recall": 1.0,
+    "f1": 0.5714285714285715,
+    "pct_manual_review": 0.0,
+    "n_transactions": 100
+  },
+  "agent": {
+    "precision": 0.625,
+    "recall": 1.0,
+    "f1": 0.7692307692307693,
+    "pct_manual_review": 0.36,
+    "n_transactions": 100,
+    "correct_disposition_rate": 0.2222222222222222,
+    "avg_cost_per_transaction_usd": 0.0021484245599999994,
+    "avg_latency_per_investigated_case_s": 24.737963705569403
+  },
+  "baseline_manual_review_count": 0,
+  "agent_manual_review_count": 36,
+  "pct_fewer_manual_touches": null
+}

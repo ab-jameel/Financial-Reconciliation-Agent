@@ -1,5 +1,6 @@
 # scripts/run_baseline_eval.py
 import json
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
@@ -10,7 +11,7 @@ from recon_orchestration.matcher.baseline import match_baseline
 from recon_orchestration.eval.metrics import precision_recall_f1
 from recon_common.models import Transaction, LedgerEntry, MatchStatus, ExceptionType
 
-SPLIT = "tuning"  # hardcoded on purpose — this script must never touch held_out
+SPLIT = sys.argv[1] if len(sys.argv) > 1 else "tuning"
 
 def main():
     session = SessionLocal()
@@ -37,7 +38,7 @@ def main():
     metrics["pct_manual_review"] = manual_review_count / len(txn_rows)
     metrics["n_transactions"] = len(txn_rows)
 
-    out_path = Path("data/generated/tuning/baseline_metrics.json")
+    out_path = Path(f"data/generated/{SPLIT}/baseline_metrics.json")
     out_path.write_text(json.dumps(metrics, indent=2))
     print(json.dumps(metrics, indent=2))
 

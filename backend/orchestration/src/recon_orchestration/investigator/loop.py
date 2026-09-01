@@ -6,14 +6,16 @@ from datetime import date as Date
 from decimal import Decimal
 import litellm
 
+from recon_common.models import ExceptionType
+from recon_orchestration.investigator.tracing import extract_cost
 from recon_orchestration.investigator.policy_store import retrieve_policy, NoPolicyInEffectError
 from recon_orchestration.investigator.tools import (
     search_related_transactions, compute_date_delta, compute_amount_delta, TOOL_SCHEMAS,
 )
 
-MODEL = os.environ.get("LLM_MODEL")  # set to your provider's exact current model string —
-                                       # check litellm/your provider's docs rather than hardcoding one here
+MODEL = os.environ.get("LLM_MODEL")
 MAX_REACT_ITERATIONS = 6  # safety cap: force a stop rather than loop indefinitely on a confused model
+VALID_DISPOSITIONS = [e.value for e in ExceptionType]
 
 
 def _dispatch_tool(name: str, args: dict, transaction: dict) -> dict:
@@ -65,7 +67,8 @@ async def investigate(transaction: dict, ledger_candidates: list[dict], rejectio
     system_prompt = (
         "You are investigating a bank-to-ledger reconciliation exception. "
         "Gather evidence using the available tools, then produce a final JSON "
-        "object: {\"confidence\": float 0-1, \"explanation\": string, \"disposition\": string}. "
+        "object: {\"confidence\": float 0-1, \"explanation\": string, "
+        f"\"disposition\": one of {VALID_DISPOSITIONS}}}. "
         "Never claim authority to post anything yourself — you only propose."
     )
     messages = [
@@ -76,8 +79,13 @@ async def investigate(transaction: dict, ledger_candidates: list[dict], rejectio
         }, default=str)},
     ]
 
+    total_cost = 0.0
     for _ in range(MAX_REACT_ITERATIONS):
-        response = litellm.completion(model=MODEL, messages=messages, tools=TOOL_SCHEMAS)
+        response = litellm.completion(
+            model=MODEL, messages=messages, tools=TOOL_SCHEMAS,
+            metadata={"case_id": transaction["id"], "step": "react"},
+        )
+        total_cost += extract_cost(response)
         msg = response.choices[0].message
 
         if not getattr(msg, "tool_calls", None):
@@ -95,8 +103,9 @@ async def investigate(transaction: dict, ledger_candidates: list[dict], rejectio
     else:
         tentative = {"confidence": 0.0, "explanation": f"Exceeded {MAX_REACT_ITERATIONS} investigation steps without a conclusion.", "disposition": "unresolved"}
 
-    return await _reflect(transaction, tentative)
-
+    final = await _reflect(transaction, tentative)
+    final["_llm_cost_usd"] = total_cost + final.pop("_reflect_cost_usd", 0.0)
+    return final
 
 async def _reflect(transaction: dict, tentative: dict) -> dict:
     """Re-fetches the authoritative policy version itself — does not trust
@@ -111,16 +120,22 @@ async def _reflect(transaction: dict, tentative: dict) -> dict:
         "Here is your tentative conclusion and the authoritative policy text "
         "actually in effect for this transaction's date. Revise your confidence "
         "or explanation if the policy contradicts your conclusion. Respond with "
-        "the same JSON shape: confidence, explanation, disposition."
+        "the same JSON shape: confidence, explanation, and disposition, where "
+        f"disposition must be one of {VALID_DISPOSITIONS}."
     )
     messages = [
         {"role": "system", "content": reflection_prompt},
         {"role": "user", "content": json.dumps({"tentative": tentative, "authoritative_policy": policy}, default=str)},
     ]
-    response = litellm.completion(model=MODEL, messages=messages)
+    response = litellm.completion(
+        model=MODEL, messages=messages,
+        metadata={"case_id": transaction["id"], "step": "reflection"},
+    )
+    reflect_cost = extract_cost(response)
     try:
         final = json.loads(response.choices[0].message.content)
     except (json.JSONDecodeError, TypeError):
         final = tentative  # Reflection call itself failed to parse — fall back rather than crash the case
     final["policy_checked"] = policy
+    final["_reflect_cost_usd"] = reflect_cost
     return final

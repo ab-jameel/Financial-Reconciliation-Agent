@@ -16,8 +16,8 @@ def main(case_id: str):
         assert payload["transaction"]["reference"] == "REF-STRESS"
         print("PAYLOAD_INTACT_OK")
 
-        result = graph.invoke(Command(resume={"decision": "approve"}), config=config)
-        assert result["case_status"] == "posted_placeholder"
+        result = graph.invoke(Command(resume={"decision": "approve", "reviewer_role": "accountant"}), config=config)
+        assert result["case_status"] == "posted_stub"
         print("RESUME_OK")
 
 if __name__ == "__main__":

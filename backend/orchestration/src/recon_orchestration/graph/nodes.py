@@ -1,10 +1,12 @@
 # backend/orchestration/src/recon_orchestration/graph/nodes.py
-from langgraph.types import interrupt
 from recon_common.models import Transaction, LedgerEntry, MatchStatus
 from recon_orchestration.matcher.deterministic import match_deterministic
 from recon_orchestration.matcher.ranking import rank_candidates
-import asyncio
+from recon_orchestration.erp_client.client import post_journal_entry
+from recon_orchestration.erp_client.approval_token import issue_approval_token
 from recon_orchestration.investigator.loop import investigate
+from langgraph.types import interrupt
+import asyncio
 import os
 
 
@@ -87,11 +89,23 @@ def route_after_decision(state):
 
 
 def write_back_node(state):
-    # Placeholder — Phase 4 replaces this with a real HTTP call to the mock
-    # ERP carrying a signed approval token. Reachable ONLY via
-    # approval_state == "approved", which only apply_decision_node sets,
-    # which only runs after an actual human resume.
-    return {"case_status": "posted_placeholder"}
+    txn = state["transaction"]
+    decision = state["_last_decision"]
+    entity = txn["description"]
+
+    if os.environ.get("RECON_FAKE_ERP") == "1":
+        return {"case_status": "posted_stub", "journal_entry": {"id": "STUB-JE", "status": "posted"}}
+
+    token = issue_approval_token(
+        case_id=state["case_id"], amount=txn["amount"], currency=txn["currency"],
+        entity=entity, reviewer_role=decision["reviewer_role"], action="post",
+    )
+    result = post_journal_entry(
+        case_id=state["case_id"], entity=entity, amount=txn["amount"], currency=txn["currency"],
+        description=f"Reconciliation write-back for {state['case_id']}",
+        token=token, idempotency_key=f"{state['case_id']}-post",
+    )
+    return {"case_status": "posted", "journal_entry": result}
 
 
 def escalate_node(state):

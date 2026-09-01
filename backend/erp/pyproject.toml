@@ -9,6 +9,8 @@ dependencies = [
     "sqlalchemy>=2.0",
     "asyncpg>=0.29",
     "recon-common",
+    "pyjwt[crypto]>=2.8",
+    "python-dotenv>=1.0",
 ]
 
 [tool.uv.sources]

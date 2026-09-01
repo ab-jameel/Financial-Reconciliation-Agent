@@ -1,4 +1,7 @@
 # backend/orchestration/src/recon_orchestration/api/app.py
+from dotenv import load_dotenv
+load_dotenv()
+
 import uuid
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -20,7 +23,7 @@ class StartCaseRequest(BaseModel):
 class ReviewDecision(BaseModel):
     decision: str  # "approve" | "reject"
     reason: str | None = None
-
+    reviewer_role: str
 
 def _config(case_id: str):
     return {"configurable": {"thread_id": case_id}}  # fixed scheme: one thread per case

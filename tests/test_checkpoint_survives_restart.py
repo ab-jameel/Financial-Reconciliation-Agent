@@ -4,7 +4,7 @@ import subprocess, sys, uuid, os
 
 def test_interrupt_survives_process_restart():
     case_id = f"stress-{uuid.uuid4().hex[:8]}"
-    env = {**os.environ, "RECON_FAKE_INVESTIGATOR": "1"}
+    env = {**os.environ, "RECON_FAKE_INVESTIGATOR": "1", "RECON_FAKE_ERP": "1"}
 
     first = subprocess.run([sys.executable, "tests/_stress/run_until_interrupt.py", case_id],
                             capture_output=True, text=True, timeout=60, env=env)

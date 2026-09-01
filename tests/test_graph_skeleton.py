@@ -56,15 +56,16 @@ def test_exception_pauses_with_persisted_payload(mock_policy, mock_related, mock
     assert snapshot.values["pending_review"]["case_id"] == "t-exception"
 
 
+@patch("recon_orchestration.graph.nodes.post_journal_entry", return_value={"id": "JE-TEST", "status": "posted"})
 @patch("recon_orchestration.investigator.loop.litellm.completion", side_effect=_fake_completion)
 @patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
 @patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
-def test_approval_reaches_write_back(mock_policy, mock_related, mock_llm):
+def test_approval_reaches_write_back(mock_policy, mock_related, mock_llm, mock_post):
     graph = build_graph(MemorySaver())
     _, config = _run(graph, "t-approve", "105.00")
-    result = graph.invoke(Command(resume={"decision": "approve"}), config=config)
+    result = graph.invoke(Command(resume={"decision": "approve", "reviewer_role": "accountant"}), config=config)
     assert result["approval_state"] == "approved"
-    assert result["case_status"] == "posted_placeholder"
+    assert result["case_status"] == "posted"
 
 
 @patch("recon_orchestration.investigator.loop.litellm.completion", side_effect=_fake_completion)

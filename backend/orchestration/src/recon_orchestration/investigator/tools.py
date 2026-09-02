@@ -2,7 +2,7 @@
 from datetime import date as Date
 from decimal import Decimal
 from recon_orchestration.db.session import SessionLocal
-from recon_orchestration.db.tables import TransactionRow
+from recon_orchestration.db.tables import TransactionRow, InvoiceRow
 
 
 def compute_date_delta(date_a: Date, date_b: Date) -> int:
@@ -12,6 +12,15 @@ def compute_date_delta(date_a: Date, date_b: Date) -> int:
 def compute_amount_delta(amount_a: Decimal, amount_b: Decimal) -> Decimal:
     return abs(amount_a - amount_b)
 
+def check_invoice_exists(invoice_number: str, dataset_split: str) -> dict:
+    session = SessionLocal()
+    try:
+        exists = session.query(InvoiceRow).filter_by(
+            invoice_number=invoice_number, dataset_split=dataset_split
+        ).first() is not None
+    finally:
+        session.close()
+    return {"invoice_number": invoice_number, "exists": exists}
 
 def search_related_transactions(reference: str, dataset_split: str, exclude_id: str) -> list[dict]:
     """Restricted to the SAME dataset_split as the case under investigation —
@@ -53,5 +62,11 @@ TOOL_SCHEMAS = [
         "parameters": {"type": "object", "properties": {
             "amount_a": {"type": "string"}, "amount_b": {"type": "string"},
         }, "required": ["amount_a", "amount_b"]},
+    }},
+    {"type": "function", "function": {
+        "name": "check_invoice_exists", "description": "Check whether an invoice number referenced by a ledger entry actually exists in invoice records.",
+        "parameters": {"type": "object", "properties": {
+            "invoice_number": {"type": "string"},
+        }, "required": ["invoice_number"]},
     }},
 ]

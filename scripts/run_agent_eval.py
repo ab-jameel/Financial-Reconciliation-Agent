@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from recon_orchestration.db.session import SessionLocal
-from recon_orchestration.db.tables import TransactionRow, LedgerEntryRow
+from recon_orchestration.matcher.reconcile import reconcile
+from recon_orchestration.db.tables import TransactionRow, LedgerEntryRow, InvoiceRow
 from recon_orchestration.matcher.deterministic import match_deterministic
 from recon_orchestration.investigator.loop import investigate
 from recon_orchestration.investigator.tracing import configure_litellm_tracing
@@ -18,9 +19,17 @@ configure_litellm_tracing()
 
 async def main():
     session = SessionLocal()
-    txn_rows = session.query(TransactionRow).filter_by(dataset_split=SPLIT).all()
+    txn_rows = session.query(TransactionRow).filter_by(dataset_split=SPLIT).order_by(TransactionRow.id).all()
     led_rows = session.query(LedgerEntryRow).filter_by(dataset_split=SPLIT).all()
     ledgers = [LedgerEntry(**{c.name: getattr(r, c.name) for c in r.__table__.columns}) for r in led_rows]
+    valid_invoices = {r[0] for r in session.query(InvoiceRow.invoice_number).filter_by(dataset_split=SPLIT).all()}
+
+    claimed_ids: set[str] = set()
+    def _claim(ledger_entry_id: str) -> bool:
+        if ledger_entry_id in claimed_ids:
+            return False
+        claimed_ids.add(ledger_entry_id)
+        return True
 
     tp = fp = fn = manual_review_count = 0
     disposition_correct = disposition_total = 0
@@ -31,7 +40,7 @@ async def main():
     for row in txn_rows:
         txn = Transaction(**{c.name: getattr(row, c.name) for c in row.__table__.columns})
         should_match = txn.label_exception_type == ExceptionType.CLEAN_MATCH
-        status, matched = match_deterministic(txn, ledgers)
+        status, matched = reconcile(txn, ledgers, load_valid_invoices_fn=lambda: valid_invoices, claim_fn=_claim)
 
         if status == MatchStatus.MATCHED:
             if should_match:

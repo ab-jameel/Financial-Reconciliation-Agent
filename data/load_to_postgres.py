@@ -16,12 +16,13 @@ def load_split(split: str):
         ("ledger_entries.json", LedgerEntryRow),
         ("invoices.json", InvoiceRow),
     ]:
+        session.query(Row).filter_by(dataset_split=split).delete()  # purge stale rows first
         rows = json.loads((GENERATED / split / fname).read_text())
         for r in rows:
             session.merge(Row(**r))
     session.commit()
     session.close()
-    print(f"Loaded {split} into Postgres.")
+    print(f"Loaded {split} into Postgres ({split} rows fully replaced, not just upserted).")
 
 if __name__ == "__main__":
     load_split("tuning")

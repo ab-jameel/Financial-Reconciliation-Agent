@@ -8,7 +8,7 @@ from pathlib import Path
 from faker import Faker
 from recon_common.models import DatasetSplit, ExceptionType
 
-GENERATOR_VERSION = "v1"
+GENERATOR_VERSION = "v4" # was "v3" — fixes missing_invoice stale-row load bug, adds settlement timing policy, makes policy_sensitive genuinely version-dependent
 SEED_TUNING = 20260828
 SEED_HELD_OUT = 20260829  # deliberately different, never derived from the other
 
@@ -24,6 +24,34 @@ EXCEPTION_COUNTS = {
     ExceptionType.POLICY_SENSITIVE: 8,
 }
 
+def _bank_style_description(vendor: str, rng: random.Random) -> str:
+    """Bank-feed-style rendering of a vendor name, applied INDEPENDENTLY of
+    exception type — real description drift (abbreviations, processor
+    prefixes, truncation) has nothing to do with whether amount/date also
+    mismatch. This is what gives the description-only baseline actual
+    signal to miss, and gives the ranking layer real cases to earn its keep."""
+    base = vendor
+    for suffix in (" LLC", " Inc.", " Inc", " Corp.", " Corp", " Ltd", " Co"):
+        if base.endswith(suffix):
+            base = base[: -len(suffix)]
+            break
+
+    style = rng.choices(
+        ["identical", "prefixed", "truncated", "acronym", "suffixed_ref"],
+        weights=[20, 20, 20, 20, 20],
+    )[0]
+    if style == "identical":
+        return base
+    if style == "prefixed":
+        return f"{rng.choice(['SQ *', 'TST* ', 'PAYPAL *', 'POS DEBIT '])}{base}"
+    if style == "truncated":
+        return base[:16].rstrip()
+    if style == "acronym":
+        words = [w for w in base.split() if w]
+        acr = "".join(w[0].upper() for w in words if w[0].isalpha())
+        tail = words[-1].upper()[:4] if words else ""
+        return f"{acr} {tail}".strip()
+    return f"{base} #{rng.randint(1000, 9999)}"  # suffixed_ref
 
 def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
     rng = random.Random(seed)
@@ -46,7 +74,7 @@ def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
             currency = "USD"
             vendor = fake.company()
 
-            txn_desc = vendor
+            txn_desc = _bank_style_description(vendor, rng)
             led_desc = vendor
             led_amount, led_date, led_currency, led_reference = (
                 base_amount, base_date, currency, reference,
@@ -65,8 +93,12 @@ def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
                 # a second transaction claiming the same ledger entry
                 pass  # handled by duplicating below
             elif exc_type == ExceptionType.POLICY_SENSITIVE:
-                # small delta a materiality-threshold policy would need to judge (Phase 3)
-                led_amount = base_amount + Decimal("0.75")
+                led_amount = base_amount + Decimal("1.50")  # was 0.75 -- must straddle v1's $1.00 / v2's $2.00 thresholds
+                # Force roughly half these cases before the v2 cutoff (2026-07-15) and half after,
+                # so the SAME $1.50 delta is genuinely material under v1 but immaterial under v2 --
+                # otherwise "policy_sensitive" never actually depends on which version applies.
+                if rng.random() < 0.5:
+                    base_date = date(2026, 6, 1) + timedelta(days=rng.randint(0, 30))
 
             transactions.append({
                 "id": txn_id, "date": base_date.isoformat(), "amount": str(base_amount),
@@ -79,11 +111,12 @@ def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
                 "invoice_number": invoice_number if exc_type != ExceptionType.MISSING_INVOICE else "INV-00000",
                 "dataset_split": split.value,
             })
-            invoices.append({
-                "id": inv_id, "invoice_number": invoice_number, "amount": str(base_amount),
-                "currency": currency, "due_date": base_date.isoformat(),
-                "dataset_split": split.value,
-            })
+            if exc_type != ExceptionType.MISSING_INVOICE:
+                invoices.append({
+                    "id": inv_id, "invoice_number": invoice_number, "amount": str(base_amount),
+                    "currency": currency, "due_date": base_date.isoformat(),
+                    "dataset_split": split.value,
+                })
 
             if exc_type == ExceptionType.DUPLICATE:
                 counter += 1

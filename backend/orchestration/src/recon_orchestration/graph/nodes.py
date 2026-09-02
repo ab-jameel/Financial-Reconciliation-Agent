@@ -5,12 +5,34 @@ from recon_orchestration.matcher.ranking import rank_candidates
 from recon_orchestration.erp_client.client import post_journal_entry
 from recon_orchestration.erp_client.approval_token import issue_approval_token
 from recon_orchestration.investigator.loop import investigate
+from recon_orchestration.matcher.reconcile import reconcile
+from recon_orchestration.matcher.claims import try_claim_ledger_entry
+from recon_orchestration.db.session import SessionLocal
+from recon_orchestration.db.tables import InvoiceRow
 from langgraph.types import interrupt
 import asyncio
 import os
 
 
 MAX_REINVESTIGATION_CYCLES = 2
+
+
+def _load_valid_invoice_numbers(dataset_split: str) -> set[str]:
+    session = SessionLocal()
+    try:
+        return {r[0] for r in session.query(InvoiceRow.invoice_number).filter_by(dataset_split=dataset_split).all()}
+    finally:
+        session.close()
+
+
+def _claim_fn_for_case(case_id: str):
+    def _claim(ledger_entry_id: str) -> bool:
+        session = SessionLocal()
+        try:
+            return try_claim_ledger_entry(session, ledger_entry_id, case_id)
+        finally:
+            session.close()
+    return _claim
 
 
 def ingestion_node(state):
@@ -22,7 +44,11 @@ def ingestion_node(state):
 def matcher_node(state):
     txn = Transaction(**state["transaction"])
     ledgers = [LedgerEntry(**le) for le in state["candidate_ledger_entries"]]
-    status, matched = match_deterministic(txn, ledgers)
+    status, matched = reconcile(
+        txn, ledgers,
+        load_valid_invoices_fn=lambda: _load_valid_invoice_numbers(txn.dataset_split),
+        claim_fn=_claim_fn_for_case(state["case_id"]),
+    )
 
     if status == MatchStatus.MATCHED:
         return {"match_status": status.value, "matched_ledger_entry_id": matched.id}

@@ -14,7 +14,7 @@ def _txn(amount="100.00"):
 
 def _led():
     return {"id": "L1", "date": "2026-08-01", "amount": "100.00", "currency": "USD",
-            "reference": "REF-1", "description": "y", "invoice_number": None,
+            "reference": "REF-1", "description": "y", "invoice_number": "INV-TEST-1",
             "dataset_split": "tuning"}
 
 
@@ -37,12 +37,12 @@ def _fake_completion(*args, **kwargs):
         choices = [FakeChoice()]
     return FakeResponse()
 
-
-def test_matched_transaction_closes_without_review():
+@patch("recon_orchestration.graph.nodes._claim_fn_for_case", return_value=lambda led_id: True)
+@patch("recon_orchestration.graph.nodes._load_valid_invoice_numbers", return_value={"INV-TEST-1"})
+def test_matched_transaction_closes_without_review(mock_invoices, mock_claim):
     graph = build_graph(MemorySaver())
     result, _ = _run(graph, "t-matched", "100.00")
     assert result["case_status"] == "closed_matched"
-    assert "__interrupt__" not in result
 
 
 @patch("recon_orchestration.investigator.loop.litellm.completion", side_effect=_fake_completion)

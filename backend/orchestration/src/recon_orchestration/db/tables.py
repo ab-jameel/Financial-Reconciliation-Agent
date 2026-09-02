@@ -2,9 +2,17 @@
 from sqlalchemy import Column, String, Date, Numeric, Enum as SAEnum
 from sqlalchemy.orm import declarative_base
 from recon_common.models import DatasetSplit, ExceptionType
+from sqlalchemy import DateTime
+from sqlalchemy.sql import func
 
 Base = declarative_base()
 
+
+class LedgerClaimRow(Base):
+    __tablename__ = "ledger_claims"
+    ledger_entry_id = Column(String, primary_key=True)
+    case_id = Column(String, nullable=False)
+    claimed_at = Column(DateTime, nullable=False, server_default=func.now())
 
 class TransactionRow(Base):
     __tablename__ = "transactions"

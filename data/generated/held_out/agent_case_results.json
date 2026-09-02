@@ -203,181 +203,181 @@
     "id": "HOLD-TXN-0041",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 22.742078499984927,
-    "cost_usd": 0.003750288
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.99,
+    "latency_s": 10.83092969993595,
+    "cost_usd": 0.006653664000000001
   },
   {
     "id": "HOLD-TXN-0042",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 24.38864820008166,
-    "cost_usd": 0.0037423359999999998
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.99,
+    "latency_s": 13.008344999980181,
+    "cost_usd": 0.007197096
   },
   {
     "id": "HOLD-TXN-0043",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 23.129521100083366,
-    "cost_usd": 0.0036799200000000006
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.97,
+    "latency_s": 11.169114199932665,
+    "cost_usd": 0.006384608000000001
   },
   {
     "id": "HOLD-TXN-0044",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.788104499923065,
-    "cost_usd": 0.0035830640000000004
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.97,
+    "latency_s": 11.536764599964954,
+    "cost_usd": 0.006302736
   },
   {
     "id": "HOLD-TXN-0045",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 21.92481029999908,
-    "cost_usd": 0.0036394080000000002
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.98,
+    "latency_s": 12.268533600028604,
+    "cost_usd": 0.00665568
   },
   {
     "id": "HOLD-TXN-0046",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.1,
-    "latency_s": 19.242148200049996,
-    "cost_usd": 0.0031747040000000004
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.97,
+    "latency_s": 12.21872689994052,
+    "cost_usd": 0.006506112
   },
   {
     "id": "HOLD-TXN-0047",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 18.9023228000151,
-    "cost_usd": 0.0032627360000000005
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.97,
+    "latency_s": 11.605116999940947,
+    "cost_usd": 0.006671992
   },
   {
     "id": "HOLD-TXN-0048",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 26.259999999892898,
-    "cost_usd": 0.004357016
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.99,
+    "latency_s": 12.921601499896497,
+    "cost_usd": 0.006926784
   },
   {
     "id": "HOLD-TXN-0049",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 19.431533899973147,
-    "cost_usd": 0.003294416
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.95,
+    "latency_s": 9.982451800024137,
+    "cost_usd": 0.006238527999999999
   },
   {
     "id": "HOLD-TXN-0050",
     "label": "amount_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 17.382831100025214,
-    "cost_usd": 0.0029419760000000002
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.97,
+    "latency_s": 11.194655800005421,
+    "cost_usd": 0.0065606399999999995
   },
   {
     "id": "HOLD-TXN-0051",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 65.55557060008869,
-    "cost_usd": 0.009179856
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.98,
+    "latency_s": 16.49832230003085,
+    "cost_usd": 0.007667775999999999
   },
   {
     "id": "HOLD-TXN-0052",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 21.318457500077784,
-    "cost_usd": 0.0035588560000000004
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.99,
+    "latency_s": 14.006763799930923,
+    "cost_usd": 0.007056959999999999
   },
   {
     "id": "HOLD-TXN-0053",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 19.368124299915507,
-    "cost_usd": 0.0063933040000000016
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.98,
+    "latency_s": 14.029801600030623,
+    "cost_usd": 0.007057463999999999
   },
   {
     "id": "HOLD-TXN-0054",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 19.888239399995655,
-    "cost_usd": 0.006305776
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.8,
+    "latency_s": 120.33135160000529,
+    "cost_usd": 0.026093152
   },
   {
     "id": "HOLD-TXN-0055",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 31.82277900003828,
-    "cost_usd": 0.007862936000000001
+    "predicted_disposition": "clean_match",
+    "confidence": 0.85,
+    "latency_s": 35.91094820003491,
+    "cost_usd": 0.011127088
   },
   {
     "id": "HOLD-TXN-0056",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 28.569026899989694,
-    "cost_usd": 0.007450624
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.95,
+    "latency_s": 16.153891399968415,
+    "cost_usd": 0.0070103200000000004
   },
   {
     "id": "HOLD-TXN-0057",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 26.732465900015086,
-    "cost_usd": 0.0068531040000000005
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.97,
+    "latency_s": 22.29220149992034,
+    "cost_usd": 0.008547648
   },
   {
     "id": "HOLD-TXN-0058",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.64070480002556,
-    "cost_usd": 0.006391576000000001
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.95,
+    "latency_s": 12.409765299991705,
+    "cost_usd": 0.006692704000000001
   },
   {
     "id": "HOLD-TXN-0059",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.01450220006518,
-    "cost_usd": 0.006131944000000001
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.95,
+    "latency_s": 21.59951510000974,
+    "cost_usd": 0.008527504
   },
   {
     "id": "HOLD-TXN-0060",
     "label": "date_mismatch",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.27563110005576,
-    "cost_usd": 0.006365616
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.95,
+    "latency_s": 10.02978829992935,
+    "cost_usd": 0.006187048
   },
   {
     "id": "HOLD-TXN-0061",
@@ -387,7 +387,11 @@
   {
     "id": "HOLD-TXN-0062",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.97,
+    "latency_s": 16.013260699925013,
+    "cost_usd": 0.007460376000000001
   },
   {
     "id": "HOLD-TXN-0063",
@@ -397,7 +401,11 @@
   {
     "id": "HOLD-TXN-0064",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.95,
+    "latency_s": 19.980243299971335,
+    "cost_usd": 0.008444280000000002
   },
   {
     "id": "HOLD-TXN-0065",
@@ -407,7 +415,11 @@
   {
     "id": "HOLD-TXN-0066",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.97,
+    "latency_s": 13.09710230003111,
+    "cost_usd": 0.007056959999999999
   },
   {
     "id": "HOLD-TXN-0067",
@@ -417,7 +429,11 @@
   {
     "id": "HOLD-TXN-0068",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.95,
+    "latency_s": 12.28260090004187,
+    "cost_usd": 0.006459
   },
   {
     "id": "HOLD-TXN-0069",
@@ -427,7 +443,11 @@
   {
     "id": "HOLD-TXN-0070",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.95,
+    "latency_s": 14.369296199991368,
+    "cost_usd": 0.007115920000000001
   },
   {
     "id": "HOLD-TXN-0071",
@@ -437,7 +457,11 @@
   {
     "id": "HOLD-TXN-0072",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.95,
+    "latency_s": 14.104125099955127,
+    "cost_usd": 0.007049416000000001
   },
   {
     "id": "HOLD-TXN-0073",
@@ -447,7 +471,11 @@
   {
     "id": "HOLD-TXN-0074",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.95,
+    "latency_s": 15.46871790010482,
+    "cost_usd": 0.00723912
   },
   {
     "id": "HOLD-TXN-0075",
@@ -457,190 +485,226 @@
   {
     "id": "HOLD-TXN-0076",
     "label": "duplicate",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "duplicate",
+    "confidence": 0.95,
+    "latency_s": 11.298566299956292,
+    "cost_usd": 0.006470376000000001
   },
   {
     "id": "HOLD-TXN-0077",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 27.54588440002408,
-    "cost_usd": 0.007513576
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.9,
+    "latency_s": 21.874930300051346,
+    "cost_usd": 0.00852348
   },
   {
     "id": "HOLD-TXN-0078",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 24.68065689993091,
-    "cost_usd": 0.006736064
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.95,
+    "latency_s": 21.16623630002141,
+    "cost_usd": 0.007900376
   },
   {
     "id": "HOLD-TXN-0079",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 31.335197300068103,
-    "cost_usd": 0.007664904
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.95,
+    "latency_s": 13.080832500010729,
+    "cost_usd": 0.006469935999999999
   },
   {
     "id": "HOLD-TXN-0080",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.2,
-    "latency_s": 20.788164400029927,
-    "cost_usd": 0.006397616
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.97,
+    "latency_s": 13.240661700023338,
+    "cost_usd": 0.006520128
   },
   {
     "id": "HOLD-TXN-0081",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.8963064000709,
-    "cost_usd": 0.006551264000000001
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.97,
+    "latency_s": 12.714895000099204,
+    "cost_usd": 0.006386368
   },
   {
     "id": "HOLD-TXN-0082",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 26.106552200042643,
-    "cost_usd": 0.007127224
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.92,
+    "latency_s": 27.28644739999436,
+    "cost_usd": 0.008888584000000001
   },
   {
     "id": "HOLD-TXN-0083",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 30.516644699964672,
-    "cost_usd": 0.007629704
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.97,
+    "latency_s": 19.74097060004715,
+    "cost_usd": 0.007925488000000001
   },
   {
     "id": "HOLD-TXN-0084",
     "label": "currency_issue",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 17.827319800038822,
-    "cost_usd": 0.005916344
+    "predicted_disposition": "currency_issue",
+    "confidence": 0.97,
+    "latency_s": 13.725054100039415,
+    "cost_usd": 0.006655144
   },
   {
     "id": "HOLD-TXN-0085",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.95,
+    "latency_s": 13.69534289999865,
+    "cost_usd": 0.006874016000000001
   },
   {
     "id": "HOLD-TXN-0086",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.97,
+    "latency_s": 8.888703600037843,
+    "cost_usd": 0.005890488
   },
   {
     "id": "HOLD-TXN-0087",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.97,
+    "latency_s": 12.018522199941799,
+    "cost_usd": 0.006642448
   },
   {
     "id": "HOLD-TXN-0088",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.97,
+    "latency_s": 11.707445200067014,
+    "cost_usd": 0.006283848
   },
   {
     "id": "HOLD-TXN-0089",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.97,
+    "latency_s": 10.183584700105712,
+    "cost_usd": 0.005957304
   },
   {
     "id": "HOLD-TXN-0090",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.95,
+    "latency_s": 11.44664360000752,
+    "cost_usd": 0.006190976
   },
   {
     "id": "HOLD-TXN-0091",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.95,
+    "latency_s": 10.957637300016358,
+    "cost_usd": 0.006205967999999999
   },
   {
     "id": "HOLD-TXN-0092",
     "label": "missing_invoice",
-    "agent_status": "matched"
+    "agent_status": "exception",
+    "predicted_disposition": "missing_invoice",
+    "confidence": 0.9,
+    "latency_s": 15.384063700097613,
+    "cost_usd": 0.006861224
   },
   {
     "id": "HOLD-TXN-0093",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.252741300035268,
-    "cost_usd": 0.0065803680000000005
+    "predicted_disposition": "clean_match",
+    "confidence": 0.95,
+    "latency_s": 33.65670300007332,
+    "cost_usd": 0.01075828
   },
   {
     "id": "HOLD-TXN-0094",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
+    "predicted_disposition": "amount_mismatch",
     "confidence": 0.95,
-    "latency_s": 38.21699790004641,
-    "cost_usd": 0.008705536
+    "latency_s": 125.73221120005473,
+    "cost_usd": 0.025773232
   },
   {
     "id": "HOLD-TXN-0095",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 27.84751230000984,
-    "cost_usd": 0.007662896
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.95,
+    "latency_s": 60.76953070005402,
+    "cost_usd": 0.015616472
   },
   {
     "id": "HOLD-TXN-0096",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 22.02615449996665,
-    "cost_usd": 0.006419296
+    "predicted_disposition": "clean_match",
+    "confidence": 0.95,
+    "latency_s": 13.678370699984953,
+    "cost_usd": 0.007096656000000001
   },
   {
     "id": "HOLD-TXN-0097",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 26.50764429999981,
-    "cost_usd": 0.0073644800000000005
+    "predicted_disposition": "date_mismatch",
+    "confidence": 0.95,
+    "latency_s": 67.09148799988907,
+    "cost_usd": 0.01778284
   },
   {
     "id": "HOLD-TXN-0098",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.1,
-    "latency_s": 26.42803740000818,
-    "cost_usd": 0.007496136
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.9,
+    "latency_s": 109.72493789996952,
+    "cost_usd": 0.024523496000000006
   },
   {
     "id": "HOLD-TXN-0099",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.0,
-    "latency_s": 20.378099699970335,
-    "cost_usd": 0.006571536000000001
+    "predicted_disposition": "clean_match",
+    "confidence": 0.92,
+    "latency_s": 26.310743000009097,
+    "cost_usd": 0.009595608
   },
   {
     "id": "HOLD-TXN-0100",
     "label": "policy_sensitive",
     "agent_status": "exception",
-    "predicted_disposition": "policy_sensitive",
-    "confidence": 0.1,
-    "latency_s": 20.835279599996284,
-    "cost_usd": 0.006586056000000001
+    "predicted_disposition": "amount_mismatch",
+    "confidence": 0.82,
+    "latency_s": 71.15664059994742,
+    "cost_usd": 0.017785391999999997
   }
 ]

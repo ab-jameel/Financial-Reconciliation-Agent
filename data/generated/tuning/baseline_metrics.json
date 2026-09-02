@@ -1,7 +1,7 @@
 {
-  "precision": 0.4,
-  "recall": 1.0,
-  "f1": 0.5714285714285715,
-  "pct_manual_review": 0.0,
+  "precision": 0.3191489361702128,
+  "recall": 0.375,
+  "f1": 0.3448275862068966,
+  "pct_manual_review": 0.53,
   "n_transactions": 100
 }

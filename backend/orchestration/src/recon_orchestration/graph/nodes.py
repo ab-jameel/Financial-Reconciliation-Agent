@@ -9,6 +9,7 @@ from recon_orchestration.matcher.reconcile import reconcile
 from recon_orchestration.matcher.claims import try_claim_ledger_entry
 from recon_orchestration.db.session import SessionLocal
 from recon_orchestration.db.tables import InvoiceRow
+from recon_orchestration.graph.case_index import update_case_index
 from langgraph.types import interrupt
 import asyncio
 import os
@@ -62,6 +63,7 @@ def route_after_matcher(state):
 
 
 def close_case_node(state):
+    update_case_index(state["case_id"], "closed_matched")
     return {"case_status": "closed_matched"}
 
 
@@ -84,7 +86,8 @@ def prepare_review_node(state):
         "proposed_disposition": state["proposed_disposition"],
         "rejection_cycle_count": state.get("rejection_cycle_count", 0),
     }
-    return {"pending_review": payload}  # committed to checkpoint BEFORE the pause
+    update_case_index(state["case_id"], "pending_review")
+    return {"pending_review": payload}
 
 
 def human_review_node(state):
@@ -95,16 +98,19 @@ def human_review_node(state):
 def apply_decision_node(state):
     decision = state["_last_decision"]
     if decision["decision"] == "approve":
+        update_case_index(state["case_id"], "approved_pending_writeback")
         return {"approval_state": "approved"}
 
     cycle = state.get("rejection_cycle_count", 0) + 1
     if cycle <= MAX_REINVESTIGATION_CYCLES:
+        update_case_index(state["case_id"], "pending_review")
         return {
             "approval_state": "rejected_reinvestigate",
             "rejection_cycle_count": cycle,
             "rejection_reason": decision.get("reason"),
             "pending_review": None,
         }
+    update_case_index(state["case_id"], "escalated_unresolved")
     return {"approval_state": "escalated_unresolved", "rejection_cycle_count": cycle}
 
 
@@ -131,6 +137,7 @@ def write_back_node(state):
         description=f"Reconciliation write-back for {state['case_id']}",
         token=token, idempotency_key=f"{state['case_id']}-post",
     )
+    update_case_index(state["case_id"], "posted")
     return {"case_status": "posted", "journal_entry": result}
 
 

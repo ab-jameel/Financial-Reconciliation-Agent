@@ -1,8 +1,7 @@
 # backend/orchestration/src/recon_orchestration/db/tables.py
-from sqlalchemy import Column, String, Date, Numeric, Enum as SAEnum
+from sqlalchemy import Column, String, Date, DateTime, Float, Numeric, Enum as SAEnum
 from sqlalchemy.orm import declarative_base
 from recon_common.models import DatasetSplit, ExceptionType
-from sqlalchemy import DateTime
 from sqlalchemy.sql import func
 
 Base = declarative_base()
@@ -46,3 +45,9 @@ class InvoiceRow(Base):
     currency = Column(String, nullable=False)
     due_date = Column(Date, nullable=False)
     dataset_split = Column(SAEnum(DatasetSplit), nullable=False, index=True)
+
+class CaseIndexRow(Base):
+    __tablename__ = "case_index"
+    case_id = Column(String, primary_key=True)
+    status = Column(String, nullable=False, index=True)
+    updated_at = Column(Float, nullable=False)

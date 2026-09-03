@@ -4,17 +4,19 @@ load_dotenv()
 
 import time
 import uuid
+import json
 from fastapi import FastAPI, HTTPException, Header
 from pydantic import BaseModel
 
 from recon_erp.db.session import SessionLocal
 from recon_erp.db.tables import JournalEntryRow, IdempotencyKeyRow
 from recon_erp.token_verify import verify_token, TokenError
-from recon_erp.audit import append_audit_event
+from recon_erp.audit import append_audit_event, _compute_hash
 from recon_common.detail_hash import compute_detail_hash
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allow_methods=["*"], allow_headers=["*"])
 
 def _serialize(entry: JournalEntryRow) -> dict:
     return {
@@ -128,5 +130,29 @@ def reverse_journal_entry(
         })
         session.commit()
         return _serialize(reversing)
+    finally:
+        session.close()
+
+@app.get("/audit-log")
+def list_audit_log(case_id: str | None = None):
+    from recon_erp.db.tables import AuditLogRow
+    session = SessionLocal()
+    try:
+        query = session.query(AuditLogRow)
+        if case_id:
+            query = query.filter_by(case_id=case_id)
+        rows = query.order_by(AuditLogRow.id).all()
+        events = []
+        for r in rows:
+            payload = json.loads(r.payload)
+            recomputed = _compute_hash(r.previous_event_hash, r.event_type, r.case_id, payload, r.created_at)
+            events.append({
+                "id": r.id, "event_type": r.event_type, "case_id": r.case_id,
+                "journal_entry_id": r.journal_entry_id, "payload": payload,
+                "previous_event_hash": r.previous_event_hash, "event_hash": r.event_hash,
+                "created_at": r.created_at,
+                "verified": recomputed == r.event_hash,
+            })
+        return events
     finally:
         session.close()

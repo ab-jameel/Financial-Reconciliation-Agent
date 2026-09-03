@@ -3,16 +3,23 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import uuid
+import json
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from langgraph.types import Command
+from fastapi.middleware.cors import CORSMiddleware
 
 from recon_orchestration.graph.build import build_graph
 from recon_orchestration.graph.checkpointer import get_checkpointer
 from recon_orchestration.graph.state import GRAPH_VERSION
 from recon_orchestration.graph.migrations import migrate_state_if_needed, UnmigratableCheckpointError
 
+from recon_orchestration.db.session import SessionLocal
+from recon_orchestration.db.tables import CaseIndexRow
+from recon_orchestration.graph.case_index import update_case_index
+
 app = FastAPI()
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allow_methods=["*"], allow_headers=["*"])
 
 
 class StartCaseRequest(BaseModel):
@@ -32,6 +39,7 @@ def _config(case_id: str):
 @app.post("/cases")
 def start_case(req: StartCaseRequest):
     case_id = req.transaction.get("id") or str(uuid.uuid4())
+    update_case_index(case_id, "processing")
     with get_checkpointer() as checkpointer:
         graph = build_graph(checkpointer)
         result = graph.invoke({
@@ -64,3 +72,25 @@ def review_case(case_id: str, decision: ReviewDecision):
             raise HTTPException(status_code=409, detail=str(e))
         result = graph.invoke(Command(resume=decision.model_dump()), config=_config(case_id))
     return {"case_id": case_id, "result": result}
+
+@app.get("/cases")
+def list_cases(status: str | None = None):
+    session = SessionLocal()
+    try:
+        query = session.query(CaseIndexRow)
+        if status:
+            query = query.filter_by(status=status)
+        rows = query.order_by(CaseIndexRow.updated_at.desc()).all()
+        return [{"case_id": r.case_id, "status": r.status, "updated_at": r.updated_at} for r in rows]
+    finally:
+        session.close()
+
+
+@app.get("/dashboard/summary")
+def dashboard_summary():
+    from pathlib import Path
+    base = Path("data/generated/held_out")  # relative to CWD — launch uvicorn from repo root
+    def _read(name):
+        p = base / name
+        return json.loads(p.read_text()) if p.exists() else None
+    return {"baseline": _read("baseline_metrics.json"), "agent": _read("agent_metrics.json"), "comparison": _read("comparison.json")}

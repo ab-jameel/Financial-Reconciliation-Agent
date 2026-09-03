@@ -7,7 +7,7 @@ from langsmith import Client
 
 def main():
     client = Client()
-    runs = client.list_runs(project_name=os.environ["LANGSMITH_PROJECT"], is_root=True)
+    runs = client.runs.query(project_name=os.environ["LANGSMITH_PROJECT"], is_root=True)
     exported = [{
         "id": str(r.id), "name": r.name, "start_time": str(r.start_time),
         "status": r.status,

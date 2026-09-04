@@ -12,17 +12,18 @@ from recon_orchestration.investigator.policy_store import retrieve_policy, NoPol
 from recon_orchestration.investigator.tools import (
     search_related_transactions, compute_date_delta, compute_amount_delta, TOOL_SCHEMAS, check_invoice_exists
 )
+from recon_orchestration.utils.json_extract import extract_json_object as _extract_json_object
 
 MODEL = os.environ.get("LLM_MODEL")
 MAX_REACT_ITERATIONS = 6  # safety cap: force a stop rather than loop indefinitely on a confused model
 VALID_DISPOSITIONS = [e.value for e in ExceptionType]
 
-
+"""
 def _extract_json_object(text: str) -> dict:
-    """Models often prepend reasoning prose before the final JSON answer,
+    Models often prepend reasoning prose before the final JSON answer,
     even when told not to. Try the whole string first (fast path); if that
     fails, scan for the LAST balanced {...} block in the text and parse
-    that instead of discarding an otherwise-correct answer."""
+    that instead of discarding an otherwise-correct answer.
     try:
         return json.loads(text)
     except (json.JSONDecodeError, TypeError):
@@ -47,7 +48,8 @@ def _extract_json_object(text: str) -> dict:
         except json.JSONDecodeError:
             continue
     raise json.JSONDecodeError("no valid JSON object found in text", text, 0)
-
+"""
+    
 def _dispatch_tool(name: str, args: dict, transaction: dict) -> dict:
     if name == "retrieve_policy":
         try:

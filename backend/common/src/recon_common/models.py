@@ -8,6 +8,7 @@ from pydantic import BaseModel
 class DatasetSplit(str, Enum):
     TUNING = "tuning"
     HELD_OUT = "held_out"
+    PRODUCTION = "production"  # real, PDF-ingested transactions — never mixed into eval splits
 
 
 class ExceptionType(str, Enum):
@@ -34,7 +35,7 @@ class Transaction(BaseModel):
     reference: str
     description: str
     dataset_split: DatasetSplit
-    label_exception_type: ExceptionType  # ground truth, for eval only
+    label_exception_type: ExceptionType | None = None  # None for real (non-synthetic) transactions
 
 
 class LedgerEntry(BaseModel):

@@ -2,9 +2,8 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-import uuid
-import json
-from fastapi import FastAPI, HTTPException
+import uuid, os, json, tempfile
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from pydantic import BaseModel
 from langgraph.types import Command
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,10 +12,11 @@ from recon_orchestration.graph.build import build_graph
 from recon_orchestration.graph.checkpointer import get_checkpointer
 from recon_orchestration.graph.state import GRAPH_VERSION
 from recon_orchestration.graph.migrations import migrate_state_if_needed, UnmigratableCheckpointError
-
 from recon_orchestration.db.session import SessionLocal
 from recon_orchestration.db.tables import CaseIndexRow
 from recon_orchestration.graph.case_index import update_case_index
+from recon_orchestration.ingestion.statement_ingestion import ingest_statement
+
 
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allow_methods=["*"], allow_headers=["*"])
@@ -94,3 +94,20 @@ def dashboard_summary():
         p = base / name
         return json.loads(p.read_text()) if p.exists() else None
     return {"baseline": _read("baseline_metrics.json"), "agent": _read("agent_metrics.json"), "comparison": _read("comparison.json")}
+
+@app.post("/statements/ingest")
+def ingest_statement_endpoint(file: UploadFile = File(...)):
+    """Deliberately a SYNC endpoint, not async def — investigator_node still
+    uses asyncio.run() internally (a known Phase 3 simplification). FastAPI
+    runs sync path operations in a worker thread with no event loop, exactly
+    like the existing /cases endpoint. Making this async def breaks the same
+    way unless the graph becomes natively async end-to-end first."""
+    if not file.filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are accepted")
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+        tmp.write(file.file.read())
+        tmp_path = tmp.name
+    try:
+        return ingest_statement(tmp_path, file.filename)
+    finally:
+        os.unlink(tmp_path)

@@ -22,7 +22,7 @@ class TransactionRow(Base):
     reference = Column(String, nullable=False)
     description = Column(String, nullable=False)
     dataset_split = Column(SAEnum(DatasetSplit), nullable=False, index=True)
-    label_exception_type = Column(SAEnum(ExceptionType), nullable=False)
+    label_exception_type = Column(SAEnum(ExceptionType), nullable=True, index=True)
 
 
 class LedgerEntryRow(Base):

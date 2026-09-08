@@ -82,21 +82,3 @@ frontend/             # Next.js review queue, dashboard, audit log viewer
 tests/
 scripts/              # eval, migration, and one-off utility scripts
 ```
-
-## Running it locally
-
-1. `docker compose up -d` (Postgres + Qdrant)
-2. `uv sync --all-packages`
-3. `uv run python scripts/init_db.py`
-   `uv run python scripts/init_erp_db.py`
-   `uv run python scripts/setup_erp_db_grants.py`
-   `uv run python scripts/migrate_add_production_support.py`
-4. `uv run python scripts/generate_keypair.py`
-5. `uv run python data/generate_synthetic_data.py`
-   `uv run python data/load_to_postgres.py`
-   `uv run python data/load_policies_to_qdrant.py`
-6. `uv run pytest -v` — should be fully green
-7. Three terminals:
-   - `uv run uvicorn recon_erp.app:app --port 8001 --app-dir backend/erp/src`
-   - `uv run uvicorn recon_orchestration.api.app:app --port 8000 --reload --app-dir backend/orchestration/src`
-   - `npm run dev` (inside `frontend/`)

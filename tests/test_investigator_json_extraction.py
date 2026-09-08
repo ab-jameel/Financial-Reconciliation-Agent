@@ -1,13 +1,11 @@
-# tests/test_investigator_json_extraction.py
-"""Regression test for a real bug found via a live trace: json.loads()
-silently discarded a correct answer because the model added reasoning
-prose before the JSON. Every earlier mocked test used pure-JSON fixtures,
-which is exactly why none of them caught this."""
+"""Verifies JSON extraction succeeds when the model prefixes its response with explanatory text."""
+
 import pytest
 from recon_orchestration.investigator.loop import _extract_json_object
 
 
 def test_extracts_json_after_reasoning_prose():
+    """Assert the JSON object is extracted when preceded by reasoning prose."""
     text = (
         "Based on the evidence, the amount differs by $5.00, exceeding the "
         "$2.00 materiality threshold.\n"
@@ -19,10 +17,12 @@ def test_extracts_json_after_reasoning_prose():
 
 
 def test_still_handles_pure_json():
+    """Assert a response that is already pure JSON parses directly."""
     text = '{"confidence": 0.5, "explanation": "x", "disposition": "clean_match"}'
     assert _extract_json_object(text)["disposition"] == "clean_match"
 
 
 def test_raises_when_no_json_present():
+    """Assert a response with no JSON raises."""
     with pytest.raises(Exception):
         _extract_json_object("no json here at all")

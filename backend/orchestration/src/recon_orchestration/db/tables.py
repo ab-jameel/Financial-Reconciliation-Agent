@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/db/tables.py
+"""SQLAlchemy table models for the orchestration database."""
+
 from sqlalchemy import Column, String, Date, DateTime, Float, Numeric, Enum as SAEnum
 from sqlalchemy.orm import declarative_base
 from recon_common.models import DatasetSplit, ExceptionType
@@ -8,12 +9,16 @@ Base = declarative_base()
 
 
 class LedgerClaimRow(Base):
+    """Records which case has claimed a ledger entry."""
+
     __tablename__ = "ledger_claims"
     ledger_entry_id = Column(String, primary_key=True)
     case_id = Column(String, nullable=False)
     claimed_at = Column(DateTime, nullable=False, server_default=func.now())
 
 class TransactionRow(Base):
+    """A persisted transaction record."""
+
     __tablename__ = "transactions"
     id = Column(String, primary_key=True)
     date = Column(Date, nullable=False)
@@ -26,6 +31,8 @@ class TransactionRow(Base):
 
 
 class LedgerEntryRow(Base):
+    """A persisted ledger entry."""
+
     __tablename__ = "ledger_entries"
     id = Column(String, primary_key=True)
     date = Column(Date, nullable=False)
@@ -38,6 +45,8 @@ class LedgerEntryRow(Base):
 
 
 class InvoiceRow(Base):
+    """A persisted invoice record."""
+
     __tablename__ = "invoices"
     id = Column(String, primary_key=True)
     invoice_number = Column(String, nullable=False, index=True)
@@ -47,6 +56,8 @@ class InvoiceRow(Base):
     dataset_split = Column(SAEnum(DatasetSplit), nullable=False, index=True)
 
 class CaseIndexRow(Base):
+    """A persisted per-case status record."""
+
     __tablename__ = "case_index"
     case_id = Column(String, primary_key=True)
     status = Column(String, nullable=False, index=True)

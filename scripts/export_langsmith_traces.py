@@ -1,4 +1,5 @@
-# scripts/export_langsmith_traces.py
+"""Exports LangSmith root runs for the configured project to JSON."""
+
 import os, json
 from pathlib import Path
 from dotenv import load_dotenv
@@ -6,6 +7,7 @@ load_dotenv()
 from langsmith import Client
 
 def main():
+    """Query and export LangSmith root runs to a JSON file."""
     client = Client()
     runs = client.runs.query(project_name=os.environ["LANGSMITH_PROJECT"], is_root=True)
     exported = [{

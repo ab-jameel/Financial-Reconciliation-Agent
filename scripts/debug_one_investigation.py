@@ -1,8 +1,5 @@
-# scripts/debug_one_investigation.py
-"""Runs the investigator on exactly ONE real held-out transaction and prints
-every LLM call's tool_calls and content directly -- bypasses LangSmith UI
-navigation entirely, so there's no ambiguity about which trace we're
-looking at."""
+"""Runs the investigator on one held-out transaction and prints each LLM call's output."""
+
 import asyncio, json
 from dotenv import load_dotenv
 load_dotenv()
@@ -16,6 +13,7 @@ TARGET_LABEL = "amount_mismatch"  # change to inspect a different category
 
 
 async def main():
+    """Investigate one transaction, printing each LLM call's tool calls and content."""
     session = SessionLocal()
     row = (session.query(TransactionRow)
            .filter_by(dataset_split=SPLIT, label_exception_type=TARGET_LABEL)
@@ -42,7 +40,8 @@ async def main():
         print()
         return response
 
-    litellm.completion = traced_completion  # module-level patch — loop.py calls litellm.completion(...) dynamically, so this is picked up without touching loop.py itself
+    # module-level patch: loop.py calls litellm.completion(...) dynamically
+    litellm.completion = traced_completion
 
     from recon_orchestration.investigator.loop import investigate
     result = await investigate(txn.model_dump(mode="json"), [l.model_dump(mode="json") for l in ledgers], None)

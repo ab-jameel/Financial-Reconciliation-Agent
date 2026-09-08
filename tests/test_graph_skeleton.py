@@ -1,4 +1,5 @@
-# tests/test_graph_skeleton.py
+"""Tests the graph's node wiring and control flow with stubbed dependencies."""
+
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.types import Command
 from recon_orchestration.graph.build import build_graph
@@ -7,18 +8,21 @@ from unittest.mock import patch
 
 
 def _txn(amount="100.00"):
+    """Return a minimal transaction dict for graph invocation."""
     return {"id": "T1", "date": "2026-08-01", "amount": amount, "currency": "USD",
             "reference": "REF-1", "description": "x",
             "dataset_split": "tuning", "label_exception_type": "clean_match"}
 
 
 def _led():
+    """Return a minimal ledger entry dict for graph invocation."""
     return {"id": "L1", "date": "2026-08-01", "amount": "100.00", "currency": "USD",
             "reference": "REF-1", "description": "y", "invoice_number": "INV-TEST-1",
             "dataset_split": "tuning"}
 
 
 def _run(graph, thread_id, txn_amount):
+    """Invoke the graph for a fresh case and return (result, config)."""
     config = {"configurable": {"thread_id": thread_id}}
     return graph.invoke({
         "case_id": thread_id, "graph_version": GRAPH_VERSION,
@@ -27,6 +31,7 @@ def _run(graph, thread_id, txn_amount):
     }, config=config), config
 
 def _fake_completion(*args, **kwargs):
+    """Return a fake litellm completion proposing an exception disposition."""
     class FakeMessage:
         tool_calls = None
         content = '{"confidence": 0.5, "explanation": "stub", "disposition": "exception"}'
@@ -40,6 +45,7 @@ def _fake_completion(*args, **kwargs):
 @patch("recon_orchestration.graph.nodes._claim_fn_for_case", return_value=lambda led_id: True)
 @patch("recon_orchestration.graph.nodes._load_valid_invoice_numbers", return_value={"INV-TEST-1"})
 def test_matched_transaction_closes_without_review(mock_invoices, mock_claim):
+    """Assert a deterministically matched transaction closes without review."""
     graph = build_graph(MemorySaver())
     result, _ = _run(graph, "t-matched", "100.00")
     assert result["case_status"] == "closed_matched"
@@ -49,6 +55,7 @@ def test_matched_transaction_closes_without_review(mock_invoices, mock_claim):
 @patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
 @patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
 def test_exception_pauses_with_persisted_payload(mock_policy, mock_related, mock_llm):
+    """Assert an exception pauses the graph with a persisted pending-review payload."""
     graph = build_graph(MemorySaver())
     result, config = _run(graph, "t-exception", "105.00")
     assert "__interrupt__" in result
@@ -61,6 +68,7 @@ def test_exception_pauses_with_persisted_payload(mock_policy, mock_related, mock
 @patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
 @patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
 def test_approval_reaches_write_back(mock_policy, mock_related, mock_llm, mock_post):
+    """Assert an approval resumes the graph through to write-back."""
     graph = build_graph(MemorySaver())
     _, config = _run(graph, "t-approve", "105.00")
     result = graph.invoke(Command(resume={"decision": "approve", "reviewer_role": "accountant"}), config=config)
@@ -72,6 +80,7 @@ def test_approval_reaches_write_back(mock_policy, mock_related, mock_llm, mock_p
 @patch("recon_orchestration.investigator.loop.search_related_transactions", return_value=[])
 @patch("recon_orchestration.investigator.loop.retrieve_policy", return_value={"policy_name": "x", "version": 1, "text": "..."})
 def test_rejection_cycles_then_escalates(mock_policy, mock_related, mock_llm):
+    """Assert repeated rejections re-investigate, then escalate unresolved."""
     graph = build_graph(MemorySaver())
     _, config = _run(graph, "t-reject", "105.00")
     for _ in range(2):
@@ -82,8 +91,7 @@ def test_rejection_cycles_then_escalates(mock_policy, mock_related, mock_llm):
 
 
 def test_write_back_only_reachable_via_apply_decision():
-    """Structural proof, not a string search: no edge lets the investigator
-    or matcher reach write-back directly."""
+    """Assert no edge lets the investigator or matcher reach write-back directly."""
     edges = {(e.source, e.target) for e in build_graph(MemorySaver()).get_graph().edges}
     assert ("investigator", "write_back") not in edges
     assert ("matcher", "write_back") not in edges

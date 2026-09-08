@@ -1,16 +1,17 @@
-# backend/orchestration/src/recon_orchestration/ingestion/pdf_extractor.py
-"""Extracts raw text per page, and rasterizes a page to PNG when it needs
-vision-based extraction instead. Uses PyMuPDF's own renderer — no external
-binary (poppler, tesseract) needed, which matters given this project's
-Windows-specific pain with system-level installs elsewhere (Postgres port
-conflicts, native services)."""
+"""Extracts raw text per page and rasterizes pages to PNG for vision-based extraction.
+
+Uses PyMuPDF's renderer so no external binary (poppler, tesseract) is required.
+"""
+
 import pdfplumber
 import pymupdf
 
 def _looks_garbled(text: str) -> bool:
-    """Catches broken font-encoding pages: non-empty text that's actually
-    nonsense (replacement characters, or every glyph mismapped). A cheap
-    heuristic, not a guarantee."""
+    """Return True when text looks like broken font encoding.
+
+    Heuristic: a high ratio of replacement characters, or a low ratio of
+    printable characters.
+    """
     if not text:
         return False
     replacement_ratio = text.count("\ufffd") / max(len(text), 1)
@@ -19,6 +20,7 @@ def _looks_garbled(text: str) -> bool:
 
 
 def extract_pages(pdf_path: str) -> list[dict]:
+    """Return per-page text, flagging pages that need vision-based extraction."""
     pages = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages):
@@ -29,6 +31,7 @@ def extract_pages(pdf_path: str) -> list[dict]:
 
 
 def rasterize_page(pdf_path: str, page_number: int, dpi: int = 200) -> bytes:
+    """Rasterize a single PDF page to PNG bytes."""
     doc = pymupdf.open(pdf_path)
     try:
         pix = doc[page_number - 1].get_pixmap(dpi=dpi)

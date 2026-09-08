@@ -1,8 +1,5 @@
-# scripts/mark_stuck_ingestions_for_retry.py
-"""One-time remediation: any case_index row still at 'processing' from
-before the per-transaction error handling existed has no real graph
-progress behind it. Reclassify as 'ingestion_failed' so the next ingestion
-call correctly retries it instead of skipping it forever."""
+"""Reclassifies stuck 'processing' cases as 'ingestion_failed' for retry."""
+
 from dotenv import load_dotenv
 load_dotenv()
 from recon_orchestration.db.session import SessionLocal

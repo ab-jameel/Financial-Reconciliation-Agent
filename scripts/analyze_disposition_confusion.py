@@ -1,4 +1,5 @@
-# scripts/analyze_disposition_confusion.py
+"""Prints a confusion matrix of true labels versus predicted dispositions."""
+
 import json
 from collections import defaultdict
 from pathlib import Path

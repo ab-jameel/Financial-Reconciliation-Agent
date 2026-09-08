@@ -1,8 +1,11 @@
-# scripts/setup_erp_db_grants.py
-"""Run once, using the admin/superuser connection, after init_erp_db.py.
-Creates recon_erp_app: a role that does NOT own these tables, so REVOKE
-actually restricts it (unlike revoking from the owner, which Postgres
-ignores). No UPDATE/DELETE grant on audit_log is the whole point."""
+"""Configures the least-privileged ERP role and its table grants.
+
+Run once, after init_erp_db.py, using the admin/superuser connection.
+Creates the recon_erp_app role and grants it SELECT/INSERT/UPDATE on
+journal_entries, SELECT/INSERT on audit_log (no UPDATE/DELETE), and
+SELECT/INSERT on idempotency_keys.
+"""
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,6 +15,7 @@ ERP_APP_PASSWORD = os.environ.get("ERP_APP_DB_PASSWORD", "erp_app_dev_only")
 
 
 def main():
+    """Create the recon_erp_app role and apply its table grants."""
     engine = create_engine(os.environ["DATABASE_URL"].replace("+asyncpg", ""))
     with engine.connect() as conn:
         conn.execute(text(f"""

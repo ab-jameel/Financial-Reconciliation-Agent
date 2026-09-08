@@ -1,4 +1,5 @@
-# backend/erp/src/recon_erp/db/tables.py
+"""SQLAlchemy table models for the ERP service: journal entries, audit log, and idempotency keys."""
+
 from sqlalchemy import Column, String, Numeric, Float, Text, Integer
 from sqlalchemy.orm import declarative_base
 
@@ -6,6 +7,8 @@ Base = declarative_base()
 
 
 class JournalEntryRow(Base):
+    """A posted or reversed journal entry."""
+
     __tablename__ = "journal_entries"
     id = Column(String, primary_key=True)
     case_id = Column(String, nullable=False, index=True)
@@ -20,6 +23,8 @@ class JournalEntryRow(Base):
 
 
 class AuditLogRow(Base):
+    """One entry in the tamper-evident audit log hash chain."""
+
     __tablename__ = "audit_log"
     id = Column(Integer, primary_key=True, autoincrement=True)  # ordering must be reliable for the hash chain
     event_type = Column(String, nullable=False)
@@ -32,6 +37,8 @@ class AuditLogRow(Base):
 
 
 class IdempotencyKeyRow(Base):
+    """Records an idempotency key so a replayed request returns the same entry."""
+
     __tablename__ = "idempotency_keys"
     idempotency_key = Column(String, primary_key=True)
     journal_entry_id = Column(String, nullable=False)

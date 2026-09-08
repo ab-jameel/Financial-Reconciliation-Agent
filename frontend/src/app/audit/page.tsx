@@ -1,8 +1,14 @@
-// frontend/src/app/audit/page.tsx
+/**
+ * Client-side audit log page rendering the tamper-evident hash chain.
+ */
+
 "use client";
 import { useEffect, useState } from "react";
 import { listAuditLog, AuditEvent } from "@/lib/api";
 
+/**
+ * Fetches and renders the audit log, marking each event as verified or not.
+ */
 export default function AuditLogPage() {
   const [events, setEvents] = useState<AuditEvent[]>([]);
   useEffect(() => { listAuditLog().then(setEvents); }, []);

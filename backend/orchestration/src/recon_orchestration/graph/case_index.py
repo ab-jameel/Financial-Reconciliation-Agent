@@ -1,9 +1,11 @@
-# backend/orchestration/src/recon_orchestration/graph/case_index.py
+"""Maintains the per-case status index used for queue listing and progress tracking."""
+
 import time
 from recon_orchestration.db.session import SessionLocal
 from recon_orchestration.db.tables import CaseIndexRow
 
 def update_case_index(case_id: str, status: str):
+    """Insert or update the case's status row and bump its updated_at timestamp."""
     session = SessionLocal()
     try:
         row = session.get(CaseIndexRow, case_id)

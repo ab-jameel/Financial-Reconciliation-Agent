@@ -1,4 +1,9 @@
-# backend/erp/src/recon_erp/audit.py
+"""Hash-chained audit log helpers for the ERP service.
+
+Each event's hash commits to its predecessor's hash, forming a chain that
+detects any later insertion, deletion, or modification.
+"""
+
 import hashlib
 import json
 import time
@@ -7,6 +12,7 @@ GENESIS_HASH = "0" * 64
 
 
 def _compute_hash(previous_hash: str, event_type: str, case_id: str, payload: dict, timestamp: float) -> str:
+    """Return the SHA-256 hash of an audit event's canonical representation."""
     canonical = json.dumps({
         "previous_hash": previous_hash, "event_type": event_type,
         "case_id": case_id, "payload": payload, "timestamp": timestamp,
@@ -15,6 +21,11 @@ def _compute_hash(previous_hash: str, event_type: str, case_id: str, payload: di
 
 
 def append_audit_event(session, event_type: str, case_id: str, journal_entry_id, payload: dict):
+    """Append one event to the audit log and return the new row.
+
+    Chains onto the most recent event's hash, or the genesis hash for the
+    first event in the log.
+    """
     from recon_erp.db.tables import AuditLogRow
     last = session.query(AuditLogRow).order_by(AuditLogRow.id.desc()).first()
     previous_hash = last.event_hash if last else GENESIS_HASH

@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/investigator/loop.py
+"""ReAct-style investigation loop that gathers evidence and proposes a disposition."""
+
 import asyncio
 import json
 import os
@@ -15,42 +16,11 @@ from recon_orchestration.investigator.tools import (
 from recon_orchestration.utils.json_extract import extract_json_object as _extract_json_object
 
 MODEL = os.environ.get("LLM_MODEL")
-MAX_REACT_ITERATIONS = 6  # safety cap: force a stop rather than loop indefinitely on a confused model
+MAX_REACT_ITERATIONS = 6  # safety cap: stop the loop rather than run indefinitely
 VALID_DISPOSITIONS = [e.value for e in ExceptionType]
 
-"""
-def _extract_json_object(text: str) -> dict:
-    Models often prepend reasoning prose before the final JSON answer,
-    even when told not to. Try the whole string first (fast path); if that
-    fails, scan for the LAST balanced {...} block in the text and parse
-    that instead of discarding an otherwise-correct answer.
-    try:
-        return json.loads(text)
-    except (json.JSONDecodeError, TypeError):
-        pass
-
-    candidates = []
-    for start in range(len(text)):
-        if text[start] != "{":
-            continue
-        depth = 0
-        for i in range(start, len(text)):
-            if text[i] == "{":
-                depth += 1
-            elif text[i] == "}":
-                depth -= 1
-                if depth == 0:
-                    candidates.append(text[start:i + 1])
-                    break
-    for candidate in reversed(candidates):
-        try:
-            return json.loads(candidate)
-        except json.JSONDecodeError:
-            continue
-    raise json.JSONDecodeError("no valid JSON object found in text", text, 0)
-"""
-    
 def _dispatch_tool(name: str, args: dict, transaction: dict) -> dict:
+    """Invoke a named investigator tool and return its result dict."""
     if name == "retrieve_policy":
         try:
             return retrieve_policy(args["query"], Date.fromisoformat(transaction["date"]))
@@ -70,9 +40,7 @@ def _dispatch_tool(name: str, args: dict, transaction: dict) -> dict:
 
 
 async def _rewoo_initial_gather(transaction: dict, ledger_candidates: list[dict]) -> dict:
-    """Plan the obvious first-round fetches upfront and run them concurrently,
-    rather than looping one tool call at a time for information we already
-    know we'll need regardless of what the model decides."""
+    """Fetch the first-round evidence concurrently rather than one tool call at a time."""
     def _policy(query):
         try:
             return retrieve_policy(query, Date.fromisoformat(transaction["date"]))
@@ -112,6 +80,11 @@ Disposition definitions — use the evidence to pick exactly one:
 """
 
 async def investigate(transaction: dict, ledger_candidates: list[dict], rejection_reason: str | None) -> dict:
+    """Run the ReAct investigation loop and return the proposed disposition.
+
+    The returned dict carries an extra "_llm_cost_usd" key with the total
+    spend across all LLM calls made during the investigation.
+    """
     safe_transaction = {k: v for k, v in transaction.items() if k != "label_exception_type"}
     initial_evidence = await _rewoo_initial_gather(safe_transaction, ledger_candidates)
 
@@ -161,9 +134,11 @@ async def investigate(transaction: dict, ledger_candidates: list[dict], rejectio
     return final
 
 async def _reflect(transaction: dict, tentative: dict) -> dict:
-    """Re-fetches the authoritative policy version itself — does not trust
-    whatever the ReAct loop happened to see or remember — and asks the model
-    to check its tentative conclusion against it before finalizing."""
+    """Re-check a tentative conclusion against the authoritative policy version.
+
+    Re-fetches the policy version in effect rather than trusting whatever the
+    ReAct loop saw, then asks the model to revise its conclusion.
+    """
     topic = DISPOSITION_POLICY_TOPIC.get(tentative.get("disposition"), "materiality threshold")
     try:
         policy = retrieve_policy(topic, Date.fromisoformat(transaction["date"]))

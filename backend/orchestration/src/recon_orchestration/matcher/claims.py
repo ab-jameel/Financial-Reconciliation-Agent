@@ -1,10 +1,13 @@
-# backend/orchestration/src/recon_orchestration/matcher/claims.py
+"""Atomic claim of a ledger entry by a case, enforced at the database level."""
+
 from sqlalchemy import text
 
 def try_claim_ledger_entry(session, ledger_entry_id: str, case_id: str) -> bool:
-    """Atomic claim via INSERT ... ON CONFLICT DO NOTHING. Returns True if
-    THIS case won the claim; False means another case already claimed this
-    exact ledger entry -- i.e. this transaction is a duplicate."""
+    """Attempt an atomic claim via INSERT ... ON CONFLICT DO NOTHING.
+
+    Returns True if this case won the claim; False means another case has
+    already claimed the entry, so this transaction is a duplicate.
+    """
     result = session.execute(text("""
         INSERT INTO ledger_claims (ledger_entry_id, case_id, claimed_at)
         VALUES (:led_id, :case_id, now())

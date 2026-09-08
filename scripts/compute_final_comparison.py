@@ -1,4 +1,5 @@
-# scripts/compute_final_comparison.py
+"""Computes the baseline-vs-agent comparison and writes it to disk."""
+
 import json
 from pathlib import Path
 

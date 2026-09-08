@@ -1,4 +1,5 @@
-# tests/_stress/resume_and_check.py
+"""Stress helper: resumes a case from its checkpoint and verifies the payload."""
+
 import sys
 from dotenv import load_dotenv
 load_dotenv()
@@ -7,6 +8,7 @@ from recon_orchestration.graph.build import build_graph
 from recon_orchestration.graph.checkpointer import get_checkpointer
 
 def main(case_id: str):
+    """Resume case_id and assert the payload is intact and write-back succeeds."""
     with get_checkpointer() as checkpointer:
         graph = build_graph(checkpointer)
         config = {"configurable": {"thread_id": case_id}}

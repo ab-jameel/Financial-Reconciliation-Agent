@@ -1,10 +1,12 @@
-# backend/orchestration/src/recon_orchestration/graph/build.py
+"""Graph construction: registers the nodes and edges of the reconciliation workflow."""
+
 from langgraph.graph import StateGraph, START, END
 from recon_orchestration.graph.state import ReconciliationState
 from recon_orchestration.graph import nodes as n
 
 
 def build_graph(checkpointer):
+    """Build the reconciliation StateGraph, wire its edges, and return the compiled graph."""
     b = StateGraph(ReconciliationState)
 
     b.add_node("ingestion", n.ingestion_node)

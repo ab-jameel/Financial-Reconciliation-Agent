@@ -1,6 +1,7 @@
-# tests/test_placeholder.py
+"""Smoke test that the workspace and its key dependencies import cleanly."""
+
 def test_core_imports():
-    """Fails fast if the environment or workspace linking is broken."""
+    """Fail fast if the environment or workspace linking is broken."""
     import fastapi
     import langgraph
     import qdrant_client

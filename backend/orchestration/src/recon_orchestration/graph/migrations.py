@@ -1,10 +1,5 @@
-# backend/orchestration/src/recon_orchestration/graph/migrations.py
-"""When GRAPH_VERSION changes, a resumed checkpoint's state["graph_version"]
-may not match the current constant. MIGRATIONS maps an old version to a
-transform function. No migration registered for an old version -> resuming
-must fail loudly and route to manual handling, never silently proceed with
-a mismatched schema. This is called at the API layer before resuming (Phase 2
-has no automatic hook for it — noted honestly rather than implied)."""
+"""State migrations applied when a checkpoint's graph version is out of date."""
+
 from recon_orchestration.graph.state import GRAPH_VERSION
 
 MIGRATIONS = {
@@ -13,10 +8,16 @@ MIGRATIONS = {
 
 
 class UnmigratableCheckpointError(Exception):
+    """Raised when a checkpoint's graph version has no registered migration."""
     pass
 
 
 def migrate_state_if_needed(state: dict) -> dict:
+    """Return the state migrated to the current graph version, if needed.
+
+    Raises UnmigratableCheckpointError when no migration is registered for
+    the checkpoint's version; the case must then be handled manually.
+    """
     version = state.get("graph_version", GRAPH_VERSION)
     if version == GRAPH_VERSION:
         return state

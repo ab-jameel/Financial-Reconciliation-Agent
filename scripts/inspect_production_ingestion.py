@@ -1,4 +1,5 @@
-# scripts/inspect_production_ingestion.py
+"""Prints all production-ingested transactions."""
+
 from dotenv import load_dotenv
 load_dotenv()
 from recon_orchestration.db.session import SessionLocal

@@ -1,4 +1,5 @@
-# tests/test_erp_write_back_safety.py
+"""Tests ERP write-back safety: token validation, idempotency, and the hash chain."""
+
 from fastapi.testclient import TestClient
 from recon_erp.app import app
 from recon_orchestration.erp_client.approval_token import issue_approval_token
@@ -7,15 +8,18 @@ client = TestClient(app)
 
 
 def _req(case_id="CASE-1", amount="100.00", entity="Acme Corp"):
+    """Return a minimal journal-entry request body."""
     return {"case_id": case_id, "entity": entity, "amount": amount, "currency": "USD", "description": "test posting"}
 
 
 def test_missing_token_rejected():
+    """Assert a request without an authorization token is rejected with 401."""
     resp = client.post("/journal-entries", json=_req("CASE-NO-TOKEN"), headers={"Idempotency-Key": "idem-no-token"})
     assert resp.status_code == 401
 
 
 def test_expired_token_rejected(monkeypatch):
+    """Assert an expired token is rejected with 403."""
     import recon_orchestration.erp_client.approval_token as token_mod
     monkeypatch.setattr(token_mod, "TOKEN_TTL_SECONDS", -10)  # forces exp into the past at issuance time
     req = _req("CASE-EXPIRED")
@@ -25,6 +29,7 @@ def test_expired_token_rejected(monkeypatch):
 
 
 def test_token_scoped_to_wrong_amount_rejected():
+    """Assert a token bound to a different amount is rejected with 403."""
     req = _req("CASE-SCOPE", amount="100.00")
     token = issue_approval_token(req["case_id"], "999.00", req["currency"], req["entity"], "accountant", "post")  # wrong amount baked in
     resp = client.post("/journal-entries", json=req, headers={"Authorization": f"Bearer {token}", "Idempotency-Key": "idem-scope"})
@@ -32,6 +37,7 @@ def test_token_scoped_to_wrong_amount_rejected():
 
 
 def test_token_scoped_to_wrong_entity_rejected():
+    """Assert a token bound to a different entity is rejected with 403."""
     req = _req("CASE-ENTITY", entity="Acme Corp")
     token = issue_approval_token(req["case_id"], req["amount"], req["currency"], "A Different Vendor Inc", "accountant", "post")
     resp = client.post("/journal-entries", json=req, headers={"Authorization": f"Bearer {token}", "Idempotency-Key": "idem-entity"})
@@ -39,6 +45,7 @@ def test_token_scoped_to_wrong_entity_rejected():
 
 
 def test_replayed_idempotency_key_does_not_double_post():
+    """Assert replaying the same idempotency key returns the original entry."""
     req = _req("CASE-IDEMPOTENT")
     token = issue_approval_token(req["case_id"], req["amount"], req["currency"], req["entity"], "accountant", "post")
     headers = {"Authorization": f"Bearer {token}", "Idempotency-Key": "idem-replay-1"}
@@ -49,6 +56,7 @@ def test_replayed_idempotency_key_does_not_double_post():
 
 
 def test_full_case_sequence_and_hash_chain_intact():
+    """Assert a full post/reverse sequence leaves an intact, verifiable hash chain."""
     case_id = "CASE-FULL-SEQUENCE"
     req = _req(case_id, amount="250.00")
 

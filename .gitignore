@@ -3,4 +3,6 @@
 __pycache__/
 *.egg-info/
 keys/
+.env.example
 PROJECT_SUMMARY.md
+.pytest_cache_local/

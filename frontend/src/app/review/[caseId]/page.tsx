@@ -1,9 +1,16 @@
-// frontend/src/app/review/[caseId]/page.tsx
+/**
+ * Client-side case detail page for reviewing and deciding a pending case.
+ */
+
 "use client";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getCase, reviewCase, CaseDetail } from "@/lib/api";
 
+/**
+ * Loads a case and renders its transaction and investigator proposal, with
+ * approve/reject controls that submit the reviewer's decision.
+ */
 export default function CaseDetailPage() {
   const { caseId } = useParams<{ caseId: string }>();
   const router = useRouter();
@@ -21,6 +28,9 @@ export default function CaseDetailPage() {
   const review = detail.state.pending_review;
   const disposition = review?.proposed_disposition;
 
+  /**
+   * Submit an approve/reject decision and navigate back to the queue.
+   */
   async function submit(decision: "approve" | "reject") {
     setSubmitting(true);
     try {

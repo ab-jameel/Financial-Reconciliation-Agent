@@ -1,4 +1,5 @@
-# data/generate_synthetic_data.py
+"""Generates the synthetic tuning and held-out datasets used for evaluation."""
+
 import json
 import random
 from datetime import date, timedelta
@@ -8,7 +9,7 @@ from pathlib import Path
 from faker import Faker
 from recon_common.models import DatasetSplit, ExceptionType
 
-GENERATOR_VERSION = "v4" # was "v3" — fixes missing_invoice stale-row load bug, adds settlement timing policy, makes policy_sensitive genuinely version-dependent
+GENERATOR_VERSION = "v4"
 SEED_TUNING = 20260828
 SEED_HELD_OUT = 20260829  # deliberately different, never derived from the other
 
@@ -25,11 +26,11 @@ EXCEPTION_COUNTS = {
 }
 
 def _bank_style_description(vendor: str, rng: random.Random) -> str:
-    """Bank-feed-style rendering of a vendor name, applied INDEPENDENTLY of
-    exception type — real description drift (abbreviations, processor
-    prefixes, truncation) has nothing to do with whether amount/date also
-    mismatch. This is what gives the description-only baseline actual
-    signal to miss, and gives the ranking layer real cases to earn its keep."""
+    """Render a vendor name in bank-feed style, independent of exception type.
+
+    Applies description drift (abbreviations, processor prefixes, truncation)
+    unrelated to whether the amount or date also mismatches.
+    """
     base = vendor
     for suffix in (" LLC", " Inc.", " Inc", " Corp.", " Corp", " Ltd", " Co"):
         if base.endswith(suffix):
@@ -54,6 +55,11 @@ def _bank_style_description(vendor: str, rng: random.Random) -> str:
     return f"{base} #{rng.randint(1000, 9999)}"  # suffixed_ref
 
 def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
+    """Generate one split's transactions, ledger entries, and invoices.
+
+    Applies the per-exception-type mutations to a shared base record, and
+    appends a duplicate transaction for each DUPLICATE case.
+    """
     rng = random.Random(seed)
     fake = Faker()
     fake.seed_instance(seed)
@@ -90,13 +96,11 @@ def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
             elif exc_type == ExceptionType.MISSING_INVOICE:
                 invoice_number = "INV-00000"  # doesn't exist in invoices table
             elif exc_type == ExceptionType.DUPLICATE:
-                # a second transaction claiming the same ledger entry
-                pass  # handled by duplicating below
+                pass  # a duplicate transaction is appended below
             elif exc_type == ExceptionType.POLICY_SENSITIVE:
-                led_amount = base_amount + Decimal("1.50")  # was 0.75 -- must straddle v1's $1.00 / v2's $2.00 thresholds
-                # Force roughly half these cases before the v2 cutoff (2026-07-15) and half after,
-                # so the SAME $1.50 delta is genuinely material under v1 but immaterial under v2 --
-                # otherwise "policy_sensitive" never actually depends on which version applies.
+                led_amount = base_amount + Decimal("1.50")  # straddles v1's $1.00 and v2's $2.00 thresholds
+                # Split these cases across the v2 effective date (2026-07-15) so
+                # the same $1.50 delta is material under v1 but immaterial under v2.
                 if rng.random() < 0.5:
                     base_date = date(2026, 6, 1) + timedelta(days=rng.randint(0, 30))
 
@@ -129,6 +133,7 @@ def generate_split(split: DatasetSplit, seed: int, id_prefix: str):
 
 
 def write_split(split: DatasetSplit, seed: int, id_prefix: str):
+    """Write one split's generated JSON files (transactions, ledger entries, invoices, manifest)."""
     out = OUTPUT_DIR / split.value
     out.mkdir(parents=True, exist_ok=True)
     txns, leds, invs = generate_split(split, seed, id_prefix)

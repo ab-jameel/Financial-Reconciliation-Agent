@@ -1,4 +1,5 @@
-# scripts/run_agent_eval.py
+"""Evaluates the agent on the held-out split and writes metrics to disk."""
+
 import asyncio, json, time
 from pathlib import Path
 from dotenv import load_dotenv
@@ -18,6 +19,7 @@ configure_litellm_tracing()
 
 
 async def main():
+    """Run the matcher and investigator over the held-out split and write metrics."""
     session = SessionLocal()
     txn_rows = session.query(TransactionRow).filter_by(dataset_split=SPLIT).order_by(TransactionRow.id).all()
     led_rows = session.query(LedgerEntryRow).filter_by(dataset_split=SPLIT).all()
@@ -46,12 +48,11 @@ async def main():
             if should_match:
                 tp += 1
             else:
-                fp += 1  # measured honestly — shouldn't happen by construction, but not assumed
+                fp += 1  # not expected by construction, but not assumed
             results.append({"id": txn.id, "label": txn.label_exception_type.value, "agent_status": "matched"})
             continue
 
-        # Exception path is ALWAYS a manual touch, regardless of investigator
-        # confidence — this is the number Phase 4 structurally guarantees.
+        # The exception path always requires manual review regardless of confidence.
         manual_review_count += 1
         if should_match:
             fn += 1

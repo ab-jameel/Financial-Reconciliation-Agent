@@ -1,4 +1,5 @@
-# tests/test_audit_log_endpoint_verification.py
+"""Verifies the audit-log endpoint reports untampered events as verified."""
+
 from fastapi.testclient import TestClient
 from recon_erp.app import app
 from recon_orchestration.erp_client.approval_token import issue_approval_token
@@ -6,6 +7,7 @@ from recon_orchestration.erp_client.approval_token import issue_approval_token
 client = TestClient(app)
 
 def test_audit_log_endpoint_reports_verified_true_for_untampered_events():
+    """Assert every audit-log event for a freshly posted entry verifies as untampered."""
     case_id = "CASE-AUDIT-ENDPOINT-TEST"
     req = {"case_id": case_id, "entity": "Test Co", "amount": "50.00", "currency": "USD", "description": "test"}
     token = issue_approval_token(case_id, req["amount"], req["currency"], req["entity"], "accountant", "post")

@@ -1,7 +1,13 @@
-// frontend/src/app/review/page.tsx
+/**
+ * Server-rendered review queue page listing cases pending review.
+ */
+
 import Link from "next/link";
 import { listCases } from "@/lib/api";
 
+/**
+ * Fetches and renders the list of cases awaiting human review.
+ */
 export default async function ReviewQueuePage() {
   const cases = await listCases("pending_review");
   return (

@@ -1,4 +1,5 @@
-# scripts/init_checkpointer.py
+"""Creates the LangGraph checkpoint tables."""
+
 from dotenv import load_dotenv
 load_dotenv()
 from recon_orchestration.graph.checkpointer import get_checkpointer

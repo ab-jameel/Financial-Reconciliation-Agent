@@ -1,4 +1,5 @@
-# data/load_to_postgres.py
+"""Loads generated JSON datasets into the orchestration Postgres database."""
+
 import json
 from pathlib import Path
 from dotenv import load_dotenv
@@ -10,6 +11,7 @@ from recon_orchestration.db.tables import TransactionRow, LedgerEntryRow, Invoic
 GENERATED = Path(__file__).parent / "generated"
 
 def load_split(split: str):
+    """Replace the given split's rows with the generated JSON for that split."""
     session = SessionLocal()
     for fname, Row in [
         ("transactions.json", TransactionRow),

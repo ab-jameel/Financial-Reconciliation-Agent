@@ -1,4 +1,5 @@
-# scripts/generate_keypair.py
+"""Generates an RSA keypair for ERP token signing and verification."""
+
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import serialization
 from pathlib import Path

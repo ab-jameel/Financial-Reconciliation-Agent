@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/ingestion/llm_extractor.py
+"""LLM-based extraction of transactions from statement text and page images."""
+
 import base64, json, os
 import litellm
 from recon_orchestration.utils.json_extract import extract_json_array
@@ -8,6 +9,7 @@ VISION_MODEL = os.environ.get("LLM_VISION_MODEL", MODEL)
 
 
 class VisionExtractionError(Exception):
+    """Raised when the vision model call itself fails."""
     pass
 
 
@@ -46,6 +48,11 @@ transaction that isn't actually present in the image."""
 
 
 def extract_transactions_from_page_text(page_text: str) -> list[dict]:
+    """Extract transactions from statement text.
+
+    Returns an empty list for blank pages or when the output does not parse
+    as a JSON array.
+    """
     if not page_text.strip():
         return []
     response = litellm.completion(model=MODEL, messages=[
@@ -59,6 +66,11 @@ def extract_transactions_from_page_text(page_text: str) -> list[dict]:
 
 
 def extract_transactions_from_page_image(image_bytes: bytes) -> list[dict]:
+    """Extract transactions from a page image via the vision model.
+
+    Raises VisionExtractionError when the vision call itself fails; returns
+    an empty list when the output does not parse as a JSON array.
+    """
     b64 = base64.b64encode(image_bytes).decode("ascii")
     try:
         response = litellm.completion(model=VISION_MODEL, messages=[

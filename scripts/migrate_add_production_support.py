@@ -1,10 +1,5 @@
-# scripts/migrate_add_production_support.py
-"""One-time schema migration for PDF ingestion. Safe to rerun.
-NOTE: 'datasetsplit' is my best guess at the Postgres-generated enum type
-name from SQLAlchemy's default naming — if this errors with 'type does not
-exist', check the real name with:
-  docker compose exec postgres psql -U recon -d reconciliation -c "\\dT+"
-and swap it in below."""
+"""One-time schema migration adding PRODUCTION support. Safe to rerun."""
+
 from dotenv import load_dotenv
 load_dotenv()
 import os

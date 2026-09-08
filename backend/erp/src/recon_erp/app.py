@@ -1,4 +1,5 @@
-# backend/erp/src/recon_erp/app.py
+"""FastAPI service exposing the mock ERP: journal-entry posting, reversal, and the audit log."""
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -19,6 +20,7 @@ app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allow_methods=["*"], allow_headers=["*"])
 
 def _serialize(entry: JournalEntryRow) -> dict:
+    """Return a journal entry row as a JSON-serializable dict."""
     return {
         "id": entry.id, "case_id": entry.case_id, "entity": entry.entity,
         "amount": str(entry.amount), "currency": entry.currency, "status": entry.status,
@@ -27,6 +29,8 @@ def _serialize(entry: JournalEntryRow) -> dict:
 
 
 class PostJournalEntryRequest(BaseModel):
+    """Request body for posting a journal entry."""
+
     case_id: str
     entity: str
     amount: str
@@ -40,6 +44,7 @@ def post_journal_entry(
     authorization: str | None = Header(None),
     idempotency_key: str = Header(..., alias="Idempotency-Key"),
 ):
+    """Post a new journal entry after verifying the approval token, honoring idempotency."""
     session = SessionLocal()
     try:
         existing = session.get(IdempotencyKeyRow, idempotency_key)
@@ -74,6 +79,7 @@ def post_journal_entry(
 
 @app.get("/journal-entries/{entry_id}")
 def get_journal_entry(entry_id: str):
+    """Return a single journal entry by id, or 404 if it does not exist."""
     session = SessionLocal()
     entry = session.get(JournalEntryRow, entry_id)
     session.close()
@@ -83,6 +89,8 @@ def get_journal_entry(entry_id: str):
 
 
 class ReverseRequest(BaseModel):
+    """Request body for reversing a journal entry."""
+
     reason: str
 
 
@@ -93,6 +101,11 @@ def reverse_journal_entry(
     authorization: str | None = Header(None),
     idempotency_key: str = Header(..., alias="Idempotency-Key"),
 ):
+    """Reverse a posted journal entry and post a negating entry.
+
+    Requires a token scoped to the "reverse" action; a "post" token is
+    rejected.
+    """
     session = SessionLocal()
     try:
         existing = session.get(IdempotencyKeyRow, idempotency_key)
@@ -108,9 +121,10 @@ def reverse_journal_entry(
         if not authorization or not authorization.startswith("Bearer "):
             raise HTTPException(status_code=401, detail="Missing bearer token")
         token = authorization.removeprefix("Bearer ")
+
         expected_hash = compute_detail_hash(original.case_id, str(original.amount), original.currency, original.entity)
         try:
-            payload = verify_token(token, "reverse", expected_hash, original.case_id)  # note: scoped "reverse", a "post" token cannot be reused here
+            payload = verify_token(token, "reverse", expected_hash, original.case_id)
         except TokenError as e:
             raise HTTPException(status_code=403, detail=str(e))
 
@@ -135,6 +149,7 @@ def reverse_journal_entry(
 
 @app.get("/audit-log")
 def list_audit_log(case_id: str | None = None):
+    """Return audit-log events, optionally filtered by case_id, with per-event hash verification."""
     from recon_erp.db.tables import AuditLogRow
     session = SessionLocal()
     try:

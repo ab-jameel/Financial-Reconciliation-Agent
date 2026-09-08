@@ -1,4 +1,5 @@
-# tests/_stress/run_until_interrupt.py
+"""Stress helper: runs a case to the human-review interrupt."""
+
 import sys
 from dotenv import load_dotenv
 load_dotenv()
@@ -7,6 +8,7 @@ from recon_orchestration.graph.checkpointer import get_checkpointer
 from recon_orchestration.graph.state import GRAPH_VERSION
 
 def main(case_id: str):
+    """Run the graph for case_id and assert it pauses at the review interrupt."""
     with get_checkpointer() as checkpointer:
         checkpointer.setup()
         graph = build_graph(checkpointer)

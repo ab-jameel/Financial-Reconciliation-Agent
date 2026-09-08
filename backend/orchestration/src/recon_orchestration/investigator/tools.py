@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/investigator/tools.py
+"""Tool functions and JSON schemas exposed to the investigator's LLM loop."""
+
 from datetime import date as Date
 from decimal import Decimal
 from recon_orchestration.db.session import SessionLocal
@@ -6,13 +7,16 @@ from recon_orchestration.db.tables import TransactionRow, InvoiceRow
 
 
 def compute_date_delta(date_a: Date, date_b: Date) -> int:
+    """Return the absolute number of days between two dates."""
     return abs((date_a - date_b).days)
 
 
 def compute_amount_delta(amount_a: Decimal, amount_b: Decimal) -> Decimal:
+    """Return the absolute difference between two amounts."""
     return abs(amount_a - amount_b)
 
 def check_invoice_exists(invoice_number: str, dataset_split: str) -> dict:
+    """Return whether the given invoice number exists within the given dataset split."""
     session = SessionLocal()
     try:
         exists = session.query(InvoiceRow).filter_by(
@@ -23,9 +27,11 @@ def check_invoice_exists(invoice_number: str, dataset_split: str) -> dict:
     return {"invoice_number": invoice_number, "exists": exists}
 
 def search_related_transactions(reference: str, dataset_split: str, exclude_id: str) -> list[dict]:
-    """Restricted to the SAME dataset_split as the case under investigation —
-    the tuning/held-out separation from Phase 1 has to hold inside the
-    investigator's tools too, not just at the top-level query layer."""
+    """Return other transactions sharing the reference, within the same dataset split.
+
+    The dataset_split restriction preserves the tuning/held-out separation
+    inside the investigator's tools as well as at the top-level query layer.
+    """
     session = SessionLocal()
     rows = (
         session.query(TransactionRow)

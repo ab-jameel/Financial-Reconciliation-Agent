@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/api/app.py
+"""FastAPI endpoints for the orchestration service."""
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -23,21 +24,27 @@ app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"], allo
 
 
 class StartCaseRequest(BaseModel):
+    """Request body for starting a reconciliation case."""
+
     transaction: dict
     candidate_ledger_entries: list[dict]
 
 
 class ReviewDecision(BaseModel):
+    """A reviewer's approve/reject decision on a pending case."""
+
     decision: str  # "approve" | "reject"
     reason: str | None = None
     reviewer_role: str
 
 def _config(case_id: str):
+    """Return the graph config mapping a case id to its checkpoint thread."""
     return {"configurable": {"thread_id": case_id}}  # fixed scheme: one thread per case
 
 
 @app.post("/cases")
 def start_case(req: StartCaseRequest):
+    """Start a new reconciliation case and return its graph result."""
     case_id = req.transaction.get("id") or str(uuid.uuid4())
     update_case_index(case_id, "processing")
     with get_checkpointer() as checkpointer:
@@ -52,6 +59,7 @@ def start_case(req: StartCaseRequest):
 
 @app.get("/cases/{case_id}")
 def get_case(case_id: str):
+    """Return a case's current state and next nodes, or 404 if not found."""
     with get_checkpointer() as checkpointer:
         snapshot = build_graph(checkpointer).get_state(_config(case_id))
     if snapshot is None or not snapshot.values:
@@ -61,6 +69,7 @@ def get_case(case_id: str):
 
 @app.post("/cases/{case_id}/review")
 def review_case(case_id: str, decision: ReviewDecision):
+    """Resume a paused case with the reviewer's decision."""
     with get_checkpointer() as checkpointer:
         graph = build_graph(checkpointer)
         snapshot = graph.get_state(_config(case_id))
@@ -75,6 +84,7 @@ def review_case(case_id: str, decision: ReviewDecision):
 
 @app.get("/cases")
 def list_cases(status: str | None = None):
+    """List cases from the case index, optionally filtered by status."""
     session = SessionLocal()
     try:
         query = session.query(CaseIndexRow)
@@ -88,20 +98,23 @@ def list_cases(status: str | None = None):
 
 @app.get("/dashboard/summary")
 def dashboard_summary():
+    """Return the held-out baseline and agent metrics for the dashboard."""
     from pathlib import Path
     base = Path("data/generated/held_out")  # relative to CWD — launch uvicorn from repo root
     def _read(name):
+        """Return the parsed JSON metric file, or None if it does not exist."""
         p = base / name
         return json.loads(p.read_text()) if p.exists() else None
     return {"baseline": _read("baseline_metrics.json"), "agent": _read("agent_metrics.json"), "comparison": _read("comparison.json")}
 
 @app.post("/statements/ingest")
 def ingest_statement_endpoint(file: UploadFile = File(...)):
-    """Deliberately a SYNC endpoint, not async def — investigator_node still
-    uses asyncio.run() internally (a known Phase 3 simplification). FastAPI
-    runs sync path operations in a worker thread with no event loop, exactly
-    like the existing /cases endpoint. Making this async def breaks the same
-    way unless the graph becomes natively async end-to-end first."""
+    """Ingest an uploaded PDF bank statement and run reconciliation on it.
+
+    Deliberately synchronous: the graph bridges into the async investigator
+    via asyncio.run(), which is only safe from a context with no running
+    event loop. FastAPI runs sync path operations in a worker thread.
+    """
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are accepted")
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:

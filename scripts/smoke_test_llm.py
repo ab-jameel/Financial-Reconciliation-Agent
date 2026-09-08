@@ -1,4 +1,5 @@
-# scripts/smoke_test_llm.py
+"""Sends a single prompt to the configured LLM to verify connectivity."""
+
 from dotenv import load_dotenv
 load_dotenv()
 import litellm, os

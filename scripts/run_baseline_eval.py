@@ -1,4 +1,5 @@
-# scripts/run_baseline_eval.py
+"""Evaluates the baseline matcher on a split and writes metrics to disk."""
+
 import json
 import sys
 from pathlib import Path
@@ -14,6 +15,7 @@ from recon_common.models import Transaction, LedgerEntry, MatchStatus, Exception
 SPLIT = sys.argv[1] if len(sys.argv) > 1 else "tuning"
 
 def main():
+    """Run the baseline matcher over the split and write metrics."""
     session = SessionLocal()
     txn_rows = session.query(TransactionRow).filter_by(dataset_split=SPLIT).all()
     led_rows = session.query(LedgerEntryRow).filter_by(dataset_split=SPLIT).all()

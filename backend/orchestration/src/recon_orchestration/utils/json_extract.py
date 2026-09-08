@@ -1,7 +1,9 @@
-# backend/orchestration/src/recon_orchestration/utils/json_extract.py
+"""Tolerant JSON extraction from LLM output that may contain surrounding prose."""
+
 import json
 
 def _find_balanced_spans(text: str, open_ch: str, close_ch: str) -> list[str]:
+    """Return every balanced span delimited by open_ch and close_ch, outermost first."""
     spans = []
     for start in range(len(text)):
         if text[start] != open_ch:
@@ -18,6 +20,11 @@ def _find_balanced_spans(text: str, open_ch: str, close_ch: str) -> list[str]:
     return spans
 
 def extract_json_object(text: str) -> dict:
+    """Parse the first valid JSON object found, tolerating prose around it.
+
+    Tries the whole string first, then falls back to the last balanced
+    "{...}" span. Raises json.JSONDecodeError when no object parses.
+    """
     try:
         return json.loads(text)
     except (json.JSONDecodeError, TypeError):
@@ -30,6 +37,10 @@ def extract_json_object(text: str) -> dict:
     raise json.JSONDecodeError("no valid JSON object found in text", text, 0)
 
 def extract_json_array(text: str) -> list:
+    """Parse the first valid JSON array found, tolerating prose around it.
+
+    Raises json.JSONDecodeError when no array parses.
+    """
     try:
         parsed = json.loads(text)
         if isinstance(parsed, list):

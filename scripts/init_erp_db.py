@@ -1,4 +1,5 @@
-# scripts/init_erp_db.py — uses the SUPERUSER connection, since only the owner can CREATE TABLE
+"""Creates the ERP database tables using the superuser connection."""
+
 from dotenv import load_dotenv
 load_dotenv()
 import os

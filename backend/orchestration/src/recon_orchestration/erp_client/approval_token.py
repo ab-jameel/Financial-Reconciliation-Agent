@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/erp_client/approval_token.py
+"""Issuance of short-lived approval tokens for ERP write-back."""
+
 import os
 import time
 import jwt
@@ -9,14 +10,17 @@ TOKEN_TTL_SECONDS = 300  # short-lived: 5 minutes
 
 
 def _private_key() -> str:
+    """Return the ERP token private key read from disk."""
     return Path(os.environ["ERP_TOKEN_PRIVATE_KEY_PATH"]).read_text()
 
 
 def issue_approval_token(case_id: str, amount: str, currency: str, entity: str,
                           reviewer_role: str, action: str = "post") -> str:
-    """Issued only from here — this module is never imported by recon_erp,
-    which never even has the private key on disk. That asymmetry, not a
-    convention, is what stops the ERP from ever minting its own tokens."""
+    """Sign a short-lived RS256 token authorizing a single write-back action.
+
+    This module is never imported by the ERP service, which does not have
+    access to the private key and therefore cannot mint its own tokens.
+    """
     now = int(time.time())
     payload = {
         "case_id": case_id,

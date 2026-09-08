@@ -1,8 +1,10 @@
-# tests/test_checkpoint_survives_restart.py
+"""Verifies an interrupted case can resume from its checkpoint after a process restart."""
+
 import subprocess, sys, uuid, os
 
 
 def test_interrupt_survives_process_restart():
+    """Assert the pending-review payload survives a fresh process and resumes correctly."""
     case_id = f"stress-{uuid.uuid4().hex[:8]}"
     env = {**os.environ, "RECON_FAKE_INVESTIGATOR": "1", "RECON_FAKE_ERP": "1"}
 

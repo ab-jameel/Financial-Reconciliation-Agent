@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/ingestion/statement_ingestion.py
+"""Ingestion of PDF bank statements into transactions and reconciliation cases."""
+
 import hashlib
 from datetime import date as Date
 from decimal import Decimal, InvalidOperation
@@ -17,17 +18,21 @@ from recon_orchestration.ingestion.llm_extractor import (
 
 
 def _synthesize_transaction_id(raw: dict, source_filename: str) -> str:
-    """Deterministic ID from content, not a random UUID — re-ingesting the
-    SAME statement resolves to the SAME id, giving natural idempotency
-    instead of duplicate rows on every re-run."""
+    """Derive a deterministic transaction id from row content.
+
+    Re-ingesting the same statement resolves to the same id, giving natural
+    idempotency instead of duplicate rows on every re-run.
+    """
     basis = "|".join([source_filename, str(raw.get("date")), str(raw.get("amount")),
                        str(raw.get("currency")), str(raw.get("description"))])
     return f"PDF-{hashlib.sha256(basis.encode()).hexdigest()[:16]}"
 
 
 def _to_transaction(raw: dict, source_filename: str) -> Transaction | None:
-    """None (not an exception) for a row that fails validation — one bad
-    row must not abort the whole statement."""
+    """Convert a raw extracted row to a Transaction, or return None on validation failure.
+
+    One bad row must not abort the whole statement.
+    """
     try:
         if not raw.get("date"):
             return None
@@ -43,6 +48,11 @@ def _to_transaction(raw: dict, source_filename: str) -> Transaction | None:
 
 
 def ingest_statement(pdf_path: str, source_filename: str) -> dict:
+    """Extract transactions from a statement, persist new ones, and run reconciliation.
+
+    Returns a summary dict describing pages processed, rows extracted and
+    failed, and new cases created.
+    """
     pages = extract_pages(pdf_path)
 
     raw_extracted, vision_errors = [], []

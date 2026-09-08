@@ -1,7 +1,13 @@
-// frontend/src/app/page.tsx
+/**
+ * Dashboard landing page showing held-out benchmark metrics.
+ */
+
 import Link from "next/link";
 import { getDashboardSummary } from "@/lib/api";
 
+/**
+ * Fetches and renders the dashboard summary metrics.
+ */
 export default async function DashboardPage() {
   const { baseline, agent, comparison } = await getDashboardSummary();
   return (
@@ -23,6 +29,10 @@ export default async function DashboardPage() {
     </main>
   );
 }
+
+/**
+ * Renders a single labeled metric value in a bordered card.
+ */
 function Metric({ label, value }: { label: string; value: string }) {
   return <div className="rounded-lg border p-4"><div className="text-sm text-gray-500">{label}</div><div className="text-xl font-mono">{value}</div></div>;
 }

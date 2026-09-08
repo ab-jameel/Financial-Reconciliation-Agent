@@ -1,4 +1,5 @@
-# data/load_policies_to_qdrant.py
+"""Loads the policy corpus into the Qdrant vector store."""
+
 import re
 from pathlib import Path
 from datetime import date
@@ -12,6 +13,7 @@ FILENAME_RE = re.compile(r"^(?P<name>[a-z_]+)__v(?P<version>\d+)__(?P<date>\d{4}
 
 
 def chunk_text(text: str, max_chars: int = 500) -> list[str]:
+    """Split text into paragraph-based chunks no larger than max_chars."""
     paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
     chunks, current = [], ""
     for p in paragraphs:
@@ -25,6 +27,7 @@ def chunk_text(text: str, max_chars: int = 500) -> list[str]:
 
 
 def main():
+    """Recreate the policies collection and upsert every policy file's chunks."""
     model = TextEmbedding(model_name="BAAI/bge-small-en-v1.5")
     client = QdrantClient(url="http://localhost:6333")
 

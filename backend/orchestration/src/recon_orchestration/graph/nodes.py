@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/graph/nodes.py
+"""Node implementations for the reconciliation graph."""
+
 from recon_common.models import Transaction, LedgerEntry, MatchStatus
 from recon_orchestration.matcher.deterministic import match_deterministic
 from recon_orchestration.matcher.ranking import rank_candidates
@@ -19,6 +20,7 @@ MAX_REINVESTIGATION_CYCLES = 2
 
 
 def _load_valid_invoice_numbers(dataset_split: str) -> set[str]:
+    """Return the set of invoice numbers present for the given dataset split."""
     session = SessionLocal()
     try:
         return {r[0] for r in session.query(InvoiceRow.invoice_number).filter_by(dataset_split=dataset_split).all()}
@@ -27,6 +29,7 @@ def _load_valid_invoice_numbers(dataset_split: str) -> set[str]:
 
 
 def _claim_fn_for_case(case_id: str):
+    """Return a closure that claims a ledger entry on behalf of the given case."""
     def _claim(ledger_entry_id: str) -> bool:
         session = SessionLocal()
         try:
@@ -37,12 +40,16 @@ def _claim_fn_for_case(case_id: str):
 
 
 def ingestion_node(state):
-    # Phase 2: just a pass-through validating the shape. Multi-source
-    # ReWOO-planned fetching arrives in Phase 3.
+    """Return an empty state update (ingestion is currently a pass-through)."""
     return {}
 
 
 def matcher_node(state):
+    """Run deterministic matching, falling back to ranking, and return the result.
+
+    On a match, returns the matched ledger-entry id; otherwise returns the
+    ranked candidate list for downstream investigation.
+    """
     txn = Transaction(**state["transaction"])
     ledgers = [LedgerEntry(**le) for le in state["candidate_ledger_entries"]]
     status, matched = reconcile(
@@ -59,15 +66,18 @@ def matcher_node(state):
 
 
 def route_after_matcher(state):
+    """Return the next node: 'close_case' when matched, otherwise 'investigator'."""
     return "close_case" if state["match_status"] == MatchStatus.MATCHED.value else "investigator"
 
 
 def close_case_node(state):
+    """Record the case as closed and matched in the case index."""
     update_case_index(state["case_id"], "closed_matched")
     return {"case_status": "closed_matched"}
 
 
 def investigator_node(state):
+    """Run the investigator (or the stress-test stub) and return its disposition."""
     if os.environ.get("RECON_FAKE_INVESTIGATOR") == "1":
         return {"proposed_disposition": {"confidence": 0.5, "explanation": "stress-test stub", "disposition": "exception"}}
     txn = state["transaction"]
@@ -78,6 +88,7 @@ def investigator_node(state):
 
 
 def prepare_review_node(state):
+    """Assemble the pending-review payload and mark the case as pending review."""
     payload = {
         "case_id": state["case_id"],
         "transaction": state["transaction"],
@@ -91,11 +102,13 @@ def prepare_review_node(state):
 
 
 def human_review_node(state):
+    """Interrupt for human review and capture the reviewer's decision."""
     decision = interrupt(state["pending_review"])
     return {"_last_decision": decision}
 
 
 def apply_decision_node(state):
+    """Apply the reviewer's decision: approve, re-investigate, or escalate."""
     decision = state["_last_decision"]
     if decision["decision"] == "approve":
         update_case_index(state["case_id"], "approved_pending_writeback")
@@ -115,12 +128,14 @@ def apply_decision_node(state):
 
 
 def route_after_decision(state):
+    """Return the next node based on the approval state."""
     return {"approved": "write_back", "rejected_reinvestigate": "investigator"}.get(
         state["approval_state"], "escalate"
     )
 
 
 def write_back_node(state):
+    """Issue an approval token and post the journal entry to the ERP."""
     txn = state["transaction"]
     decision = state["_last_decision"]
     entity = txn["description"]
@@ -142,4 +157,5 @@ def write_back_node(state):
 
 
 def escalate_node(state):
+    """Mark the case as escalated and unresolved."""
     return {"case_status": "escalated_unresolved"}

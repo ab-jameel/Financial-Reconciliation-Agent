@@ -1,10 +1,13 @@
-# backend/orchestration/src/recon_orchestration/graph/state.py
+"""State schema shared by every node in the reconciliation graph."""
+
 from typing import TypedDict, Optional
 
 GRAPH_VERSION = "v1"
 
 
 class ReconciliationState(TypedDict, total=False):
+    """Typed shape of the state threaded through the LangGraph workflow."""
+
     case_id: str
     graph_version: str
     transaction: dict

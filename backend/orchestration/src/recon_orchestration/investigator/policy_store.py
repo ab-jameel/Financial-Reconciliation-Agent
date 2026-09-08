@@ -1,4 +1,5 @@
-# backend/orchestration/src/recon_orchestration/investigator/policy_store.py
+"""Retrieval of the accounting-policy version in effect for a transaction date."""
+
 from datetime import date as Date
 from qdrant_client import QdrantClient
 from qdrant_client.models import Filter, FieldCondition, MatchValue
@@ -10,13 +11,18 @@ _client = QdrantClient(url="http://localhost:6333")
 
 
 class NoPolicyInEffectError(Exception):
-    """Raised when the transaction date predates every known version of the
-    matched policy — applying any version retroactively would be wrong, so
-    this must surface as an explicit gap, never silently fall back to latest."""
+    """Raised when the transaction date predates every known version of the matched policy."""
 
 
 def retrieve_policy(query: str, transaction_date: Date) -> dict:
-    # Step 1: semantic search identifies the TOPIC only.
+    """Return the policy version in effect for the transaction date.
+
+    Semantically searches to identify the policy topic, fetches all versions
+    of that policy by exact filter, then selects the version whose
+    effective_date is the latest one on or before the transaction date.
+    Raises NoPolicyInEffectError when nothing matches or the date predates
+    every version.
+    """
     query_vec = list(_model.embed([query]))[0]
     response = _client.query_points(
         collection_name=COLLECTION,
@@ -28,8 +34,6 @@ def retrieve_policy(query: str, transaction_date: Date) -> dict:
         raise NoPolicyInEffectError(f"No policy found matching query: {query!r}")
     policy_name = hits[0].payload["policy_name"]
 
-    # Step 2: fetch ALL versions/chunks of that policy by exact filter,
-    # independent of their embedding scores.
     all_chunks, _ = _client.scroll(
         collection_name=COLLECTION,
         scroll_filter=Filter(must=[FieldCondition(key="policy_name", match=MatchValue(value=policy_name))]),
@@ -37,7 +41,6 @@ def retrieve_policy(query: str, transaction_date: Date) -> dict:
     )
     versions_seen = {c.payload["version"]: Date.fromisoformat(c.payload["effective_date"]) for c in all_chunks}
 
-    # Step 3: pick the version in effect on transaction_date — max effective_date <= transaction_date.
     eligible = {v: eff for v, eff in versions_seen.items() if eff <= transaction_date}
     if not eligible:
         raise NoPolicyInEffectError(

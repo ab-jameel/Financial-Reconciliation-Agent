@@ -1,13 +1,12 @@
-# tests/test_statement_ingestion_dedup.py
-"""Mocks extraction entirely — tests dedup/idempotency, not the model's
-actual PDF-reading ability, which is a separate empirical question (see
-'what this can't verify' below)."""
+"""Tests dedup/idempotency with extraction fully mocked."""
+
 from unittest.mock import patch
 from recon_orchestration.ingestion.statement_ingestion import ingest_statement
 
 @patch("recon_orchestration.ingestion.statement_ingestion.extract_transactions_from_page_text")
 @patch("recon_orchestration.ingestion.statement_ingestion.extract_pages")
 def test_reingesting_same_statement_creates_no_duplicates(mock_pages, mock_extract, tmp_path, monkeypatch):
+    """Assert re-ingesting the same statement creates no duplicate transactions."""
     monkeypatch.setenv("RECON_FAKE_INVESTIGATOR", "1")  # avoid a real LLM call for the resulting exception case
     mock_pages.return_value = [{"page_number": 1, "text": "statement text", "needs_vision": False}]
     mock_extract.return_value = [{"date": "2026-08-01", "amount": "75.00", "currency": "USD",

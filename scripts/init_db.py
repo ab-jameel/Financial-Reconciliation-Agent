@@ -1,4 +1,5 @@
-# scripts/init_db.py
+"""Creates the orchestration database tables."""
+
 from dotenv import load_dotenv
 load_dotenv()
 from recon_orchestration.db.tables import Base
